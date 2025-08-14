@@ -353,54 +353,7 @@
    
 
 
-    <script>
-      // تأكد من تحميل العناصر أولاً
-      document.addEventListener('DOMContentLoaded', () => {
-        const faqButtons = document.querySelectorAll('.faq-item button');
-        faqButtons.forEach(btn => {
-          btn.addEventListener('click', () => {
-            const answer = btn.nextElementSibling;
-            // Toggle للعرض
-            if (answer.style.display === 'block') {
-              answer.style.display = 'none';
-            } else {
-              answer.style.display = 'block';
-            }
-          });
-        });
-      });
-      // فتح المودال
-      function openModal(id) {
-        document.getElementById(id).style.display = 'flex';
-      }
-      // غلق المودال
-      function closeModal(id) {
-        document.getElementById(id).style.display = 'none';
-      }
-      // إغلاق عند النقر خارج المودال
-      window.onclick = function(event) {
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(modal => {
-          if (event.target === modal) modal.style.display = 'none';
-        });
-      }
-
-      // هيدر الهامبرغر
-      const hamburger = document.querySelector('.hamburger');
-      const nav = document.querySelector('.nav');
-      hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
-
-      // FAQ toggle
-      const faqButtons = document.querySelectorAll('.faq-item button');
-      faqButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const answer = btn.nextElementSibling;
-          answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-        });
-      });
-    </script>
+    <script src="script.js"></script>
 
     <footer>
       جميع الحقوق محفوظة © 2025
