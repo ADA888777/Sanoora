@@ -75,7 +75,50 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(item);
   });
 
-  // Counter animation for stats
+  // Modal functionality
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+}
+
+// FAQ functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      // Close all FAQ items
+      faqItems.forEach(faq => {
+        faq.classList.remove('active');
+        faq.querySelector('.faq-answer').classList.remove('active');
+      });
+      
+      // Open clicked item if it wasn't active
+      if (!isActive) {
+        item.classList.add('active');
+        answer.classList.add('active');
+      }
+    });
+  });
+});
+
+// Counter animation for stats
   const animateCounter = (element, target, duration = 2000) => {
     let start = 0;
     const increment = target / (duration / 16);

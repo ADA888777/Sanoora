@@ -270,6 +270,49 @@
     margin-bottom: 1.5rem;
   }
 
+  .card-flag {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    position: relative;
+  }
+
+  .card-flag::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: exclude;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: rotateBorder 3s linear infinite;
+  }
+
+  @keyframes rotateBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .card-flag img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
   .card-title {
     font-size: 1.8rem;
     font-weight: 700;
@@ -363,10 +406,33 @@
   #italian .enroll-btn { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
   #italian .enroll-btn::before { background: linear-gradient(135deg, #fee140 0%, #fa709a 100%); }
 
-  #chinese .card-icon { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: var(--text-dark); }
-  #chinese .language-card::before { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
-  #chinese .enroll-btn { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: var(--text-dark); }
-  #chinese .enroll-btn::before { background: linear-gradient(135deg, #fcb69f 0%, #ffecd2 100%); }
+  #chinese .language-card::before { background: linear-gradient(135deg, #dc143c 0%, #ffd700 100%); }
+  #chinese .enroll-btn { background: linear-gradient(135deg, #dc143c 0%, #ffd700 100%); }
+  #chinese .enroll-btn::before { background: linear-gradient(135deg, #ffd700 0%, #dc143c 100%); }
+
+  #japanese .language-card::before { background: linear-gradient(135deg, #bc002d 0%, #ffffff 50%, #bc002d 100%); }
+  #japanese .enroll-btn { background: linear-gradient(135deg, #bc002d 0%, #ffffff 50%, #bc002d 100%); color: var(--text-dark); }
+  #japanese .enroll-btn::before { background: linear-gradient(135deg, #ffffff 0%, #bc002d 100%); }
+
+  #portuguese .language-card::before { background: linear-gradient(135deg, #009b3a 0%, #fedf00 50%, #002776 100%); }
+  #portuguese .enroll-btn { background: linear-gradient(135deg, #009b3a 0%, #fedf00 50%, #002776 100%); }
+  #portuguese .enroll-btn::before { background: linear-gradient(135deg, #002776 0%, #009b3a 100%); }
+
+  #russian .language-card::before { background: linear-gradient(135deg, #ffffff 0%, #0039a6 50%, #d52b1e 100%); }
+  #russian .enroll-btn { background: linear-gradient(135deg, #0039a6 0%, #d52b1e 100%); }
+  #russian .enroll-btn::before { background: linear-gradient(135deg, #d52b1e 0%, #0039a6 100%); }
+
+  #korean .language-card::before { background: linear-gradient(135deg, #003478 0%, #cd2e3a 100%); }
+  #korean .enroll-btn { background: linear-gradient(135deg, #003478 0%, #cd2e3a 100%); }
+  #korean .enroll-btn::before { background: linear-gradient(135deg, #cd2e3a 0%, #003478 100%); }
+
+  #dutch .language-card::before { background: linear-gradient(135deg, #ae1c28 0%, #ffffff 50%, #21468b 100%); }
+  #dutch .enroll-btn { background: linear-gradient(135deg, #ae1c28 0%, #21468b 100%); }
+  #dutch .enroll-btn::before { background: linear-gradient(135deg, #21468b 0%, #ae1c28 100%); }
+
+  #turkish .language-card::before { background: linear-gradient(135deg, #e30a17 0%, #ffffff 100%); }
+  #turkish .enroll-btn { background: linear-gradient(135deg, #e30a17 0%, #ffffff 100%); color: var(--text-dark); }
+  #turkish .enroll-btn::before { background: linear-gradient(135deg, #ffffff 0%, #e30a17 100%); }
 
   /* Stats Section */
   .stats-section {
@@ -658,7 +724,7 @@
         <span class="stat-label">طالب متخرج</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">10</span>
+        <span class="stat-number">12</span>
         <span class="stat-label">لغات عالمية</span>
       </div>
       <div class="stat-item">
@@ -682,8 +748,8 @@
     <div class="courses-grid">
       <!-- English -->
       <div id="english" class="language-card">
-        <div class="card-icon">
-          <i class="fas fa-globe"></i>
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/gb.png" alt="British Flag" />
         </div>
         <h3 class="card-title">اللغة الإنجليزية</h3>
         <p class="card-description">لغة العلم والتكنولوجيا والأعمال العالمية. افتح أبواب الفرص اللامحدودة</p>
@@ -699,8 +765,8 @@
 
       <!-- Spanish -->
       <div id="spanish" class="language-card">
-        <div class="card-icon">
-          <i class="fas fa-heart"></i>
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/es.png" alt="Spanish Flag" />
         </div>
         <h3 class="card-title">اللغة الإسبانية</h3>
         <p class="card-description">ثاني أكثر اللغات تحدثاً في العالم. تواصل مع 500 مليون شخص حول العالم</p>
@@ -716,8 +782,8 @@
 
       <!-- French -->
       <div id="french" class="language-card">
-        <div class="card-icon">
-          <i class="fas fa-star"></i>
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" />
         </div>
         <h3 class="card-title">اللغة الفرنسية</h3>
         <p class="card-description">لغة الثقافة والفن والدبلوماسية. ادخل عالم الرقي والأناقة الأوروبية</p>
@@ -733,8 +799,8 @@
 
       <!-- German -->
       <div id="german" class="language-card">
-        <div class="card-icon">
-          <i class="fas fa-industry"></i>
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/de.png" alt="German Flag" />
         </div>
         <h3 class="card-title">اللغة الألمانية</h3>
         <p class="card-description">لغة الابتكار والهندسة. احصل على فرص عمل في أقوى اقتصادات أوروبا</p>
@@ -750,8 +816,8 @@
 
       <!-- Italian -->
       <div id="italian" class="language-card">
-        <div class="card-icon">
-          <i class="fas fa-palette"></i>
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/it.png" alt="Italian Flag" />
         </div>
         <h3 class="card-title">اللغة الإيطالية</h3>
         <p class="card-description">لغة الفن والموسيقى والطعام. استمتع بثقافة البحر المتوسط الغنية</p>
@@ -767,8 +833,8 @@
 
       <!-- Chinese -->
       <div id="chinese" class="language-card">
-        <div class="card-icon">
-          <i class="fas fa-dragon"></i>
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/cn.png" alt="Chinese Flag" />
         </div>
         <h3 class="card-title">اللغة الصينية</h3>
         <p class="card-description">لغة المستقبل الاقتصادي. تواصل مع أكبر سوق في العالم</p>
@@ -777,6 +843,108 @@
           <span class="new-price">149 ريال</span>
         </div>
         <button class="enroll-btn" onclick="openModal('modal6')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- Japanese -->
+      <div id="japanese" class="language-card">
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/jp.png" alt="Japanese Flag" />
+        </div>
+        <h3 class="card-title">اللغة اليابانية</h3>
+        <p class="card-description">لغة التكنولوجيا والثقافة الآسيوية. انفتح على عالم الإبداع والابتكار</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal7')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- Portuguese -->
+      <div id="portuguese" class="language-card">
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/br.png" alt="Brazilian Flag" />
+        </div>
+        <h3 class="card-title">اللغة البرتغالية</h3>
+        <p class="card-description">لغة البرازيل والبرتغال. اكتشف ثقافات أمريكا الجنوبية الغنية</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal8')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- Russian -->
+      <div id="russian" class="language-card">
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/ru.png" alt="Russian Flag" />
+        </div>
+        <h3 class="card-title">اللغة الروسية</h3>
+        <p class="card-description">لغة أوراسيا الواسعة. افتح أبواب التجارة والعمل في روسيا ودول الاتحاد السوفيتي</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal9')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- Korean -->
+      <div id="korean" class="language-card">
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/kr.png" alt="Korean Flag" />
+        </div>
+        <h3 class="card-title">اللغة الكورية</h3>
+        <p class="card-description">لغة الكيبوب والدراما. انغمس في الثقافة الكورية والتقنيات المتطورة</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal10')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- Dutch -->
+      <div id="dutch" class="language-card">
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/nl.png" alt="Dutch Flag" />
+        </div>
+        <h3 class="card-title">اللغة الهولندية</h3>
+        <p class="card-description">لغة هولندا وبلجيكا. استكشف عالم التجارة الأوروبية والفرص الاستثمارية</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal11')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- Turkish -->
+      <div id="turkish" class="language-card">
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/tr.png" alt="Turkish Flag" />
+        </div>
+        <h3 class="card-title">اللغة التركية</h3>
+        <p class="card-description">لغة الجسر بين آسيا وأوروبا. اكتشف تاريخ وثقافة الإمبراطورية العثمانية</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal12')">
           <i class="fas fa-play"></i>
           ابدأ الآن
         </button>
