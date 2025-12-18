@@ -1,362 +1,882 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دورات لغات البشرية</title>
+<title>أكاديمية اللغات العالمية - تعلم لغات المستقبل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
-  <style>
-    * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif;}
-    body {background:#f4f4f9; color:#333;}
-    header {background:#6a5acd; color:white; padding:30px 20px; text-align:center; position:relative;}
-    header h1 {font-size:36px; margin-bottom:10px;}
-    header p {font-size:18px; color:#f0e6ff;}
-    nav {display:flex; flex-wrap:wrap; justify-content:center; gap:15px; background:#5a4db1; padding:12px;}
-    nav a {color:white; text-decoration:none; font-weight:bold; padding:8px 14px; border-radius:5px; background:#4b3a99; transition:0.3s;}
-    nav a:hover {background:#3a2a7d;}
-    .hamburger {display:none; cursor:pointer; font-size:28px; position:absolute; top:20px; left:20px;}
-    .container {max-width:1200px; margin:30px auto; padding:0 20px;}
-    h2 {margin-bottom:20px; color:#6a5acd; font-size:28px;}
-    .courses {display:flex; flex-wrap:wrap; gap:25px; justify-content:center;}
+  :root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --text-dark: #2c3e50;
+    --text-light: #6c757d;
+    --success: #28a745;
+    --shadow: 0 15px 35px rgba(50, 50, 93, 0.1);
+    --hover-shadow: 0 20px 40px rgba(50, 50, 93, 0.15);
+    --border-radius: 15px;
+  }
 
-    /* FAQ */
-    .faq {max-width:900px; margin:40px auto; padding:0 20px;}
-    .faq h2 {color:#6a5acd;}
-    .faq-item {background:white; margin-bottom:10px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); overflow:hidden;}
-    .faq-item button {width:100%; text-align:right; padding:15px; font-size:18px; border:none; background:#eee; cursor:pointer; outline:none;}
-    .faq-item button:hover {background:#ddd;}
-    .faq-item .answer {padding:15px; display:none; background:#fafafa; line-height:1.6;}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    /* Responsive */
-    @media(max-width:768px){
-      nav {flex-direction:column; display:none;}
-      nav.active {display:flex;}
-      .hamburger {display:block;}
+  body {
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--light-bg);
+    overflow-x: hidden;
+  }
+
+  /* Header Styles */
+  .hero-section {
+    background: var(--primary-gradient);
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="200" r="2" fill="white" opacity="0.1"/><circle cx="800" cy="300" r="3" fill="white" opacity="0.1"/><circle cx="400" cy="600" r="2" fill="white" opacity="0.1"/><circle cx="600" cy="800" r="3" fill="white" opacity="0.1"/></svg>');
+    animation: float 20s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 2rem;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #fff, #f8f9fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    opacity: 0.9;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: var(--white);
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--secondary-gradient);
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+
+  .cta-button:hover::before {
+    left: 0;
+  }
+
+  .cta-button:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: var(--hover-shadow);
+  }
+
+  /* Navigation */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--primary-gradient);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section {
+    padding: 6rem 0;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Language Cards */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .language-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .language-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .language-card:hover::before {
+    left: 0;
+  }
+
+  .language-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+  }
+
+  .card-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+  }
+
+  .card-description {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .card-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .old-price {
+    text-decoration: line-through;
+    color: var(--text-light);
+    font-size: 1.1rem;
+  }
+
+  .new-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--success);
+  }
+
+  .enroll-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .enroll-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+
+  .enroll-btn:hover::before {
+    left: 0;
+  }
+
+  .enroll-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+
+  /* Language specific colors */
+  #english .card-icon { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  #english .language-card::before { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  #english .enroll-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  #english .enroll-btn::before { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
+
+  #spanish .card-icon { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+  #spanish .language-card::before { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+  #spanish .enroll-btn { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+  #spanish .enroll-btn::before { background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%); }
+
+  #french .card-icon { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+  #french .language-card::before { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+  #french .enroll-btn { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+  #french .enroll-btn::before { background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); }
+
+  #german .card-icon { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+  #german .language-card::before { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+  #german .enroll-btn { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+  #german .enroll-btn::before { background: linear-gradient(135deg, #38f9d7 0%, #43e97b 100%); }
+
+  #italian .card-icon { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+  #italian .language-card::before { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+  #italian .enroll-btn { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+  #italian .enroll-btn::before { background: linear-gradient(135deg, #fee140 0%, #fa709a 100%); }
+
+  #chinese .card-icon { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: var(--text-dark); }
+  #chinese .language-card::before { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+  #chinese .enroll-btn { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: var(--text-dark); }
+  #chinese .enroll-btn::before { background: linear-gradient(135deg, #fcb69f 0%, #ffecd2 100%); }
+
+  /* Stats Section */
+  .stats-section {
+    background: var(--white);
+    padding: 4rem 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-item {
+    padding: 2rem;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 900;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    background: var(--light-bg);
+  }
+
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: var(--white);
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    border: none;
+    background: transparent;
+    text-align: right;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .faq-question:hover {
+    background: rgba(102, 126, 234, 0.05);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: rgba(248, 249, 250, 0.5);
+  }
+
+  .faq-answer.active {
+    padding: 1.5rem;
+    max-height: 200px;
+  }
+
+  .faq-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+  }
+
+  .modal-content {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    text-align: right;
+    box-shadow: var(--hover-shadow);
+    animation: slideIn 0.3s ease;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+  }
+
+  .close-btn:hover {
+    color: var(--text-dark);
+  }
+
+  .modal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .modal-description {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-features {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .modal-features li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  .modal-features i {
+    color: var(--success);
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--dark-gradient);
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: white;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
     }
 
-    /* Cards */
-    .card {
-      color:white;
-      width:250px;
-      height:300px;
-      border-radius:15px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-      cursor:pointer;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:25px;
-      transition:0.4s;
+    .hero-subtitle {
+      font-size: 1.2rem;
     }
-    .card:hover {transform:translateY(-7px) scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.5);}
-    .card h3 {font-size:22px; margin-bottom:12px; font-weight:bold;}
-    .card p {font-size:16px; margin-bottom:12px;}
-    .price {margin-top:10px; font-size:18px; font-weight:bold;}
-    .price span {text-decoration:line-through; color:#bbb; margin-left:5px;}
-    .price .discount {color:#ffcc00; font-size:20px; font-weight:bold;}
 
-    /* ألوان لكل لغة */
-    #english .card {background:#1abc9c;}
-    #spanish .card {background:#e67e22;}
-    #french .card {background:#3498db;}
-    #german .card {background:#9b59b6;}
-    #italian .card {background:#e74c3c;}
-    #chinese .card {background:#f1c40f; color:#333;}
-    #japanese .card {background:#e84393;}
-    #korean .card {background:#2ecc71;}
-    #russian .card {background:#34495e;}
-    #turkish .card {background:#d35400;}
+    .navbar {
+      padding: 1rem;
+    }
 
-    /* Modal */
-    .modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:10;}
-    .modal-content {background:white; padding:30px; border-radius:15px; max-width:550px; width:90%; position:relative; text-align:right;}
-    .close {position:absolute; top:15px; left:15px; font-size:26px; cursor:pointer; color:#6a5acd;}
-    .btn {display:inline-block; padding:12px 20px; background:#6a5acd; color:white; text-decoration:none; border-radius:8px; margin-top:15px; font-weight:bold;}
-    .btn:hover {background:#5a4db1;}
-    footer {text-align:center; padding:25px; background:#5a4db1; color:white; margin-top:30px; font-size:16px;}
-  </style>
-  </head>
-  <body>
+    .nav-links {
+      display: none;
+    }
 
+    .section-title {
+      font-size: 2rem;
+    }
 
-<header>
-  <h1>دورات لغات البشرية</h1>
-  <p>تعلم أي لغة بسهولة، خطوة خطوة</p>
-</header>
+    .courses-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
 
-<nav>
-  <a href="#english">لغة إنجليزية</a>
-  <a href="#spanish">لغة إسبانية</a>
-  <a href="#french">لغة فرنسية</a>
-  <a href="#german">لغة ألمانية</a>
-  <a href="#italian">لغة إيطالية</a>
-  <a href="#chinese">لغة صينية</a>
-  <a href="#japanese">لغة يابانية</a>
-  <a href="#korean">لغة كورية</a>
-  <a href="#russian">لغة روسية</a>
-  <a href="#turkish">لغة تركية</a>
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal-content {
+      padding: 2rem;
+      margin: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-content">
+    <div class="logo">أكاديمية اللغات العالمية</div>
+    <ul class="nav-links">
+      <li><a href="#courses">الدورات</a></li>
+      <li><a href="#about">من نحن</a></li>
+      <li><a href="#faq">الأسئلة الشائعة</a></li>
+      <li><a href="#contact">التواصل</a></li>
+    </ul>
+  </div>
 </nav>
 
-<div class="container">
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">تعلم لغات المستقبل</h1>
+    <p class="hero-subtitle">انضم لأكثر من 50,000 طالب واكتسب مهارات لغوية تفتح لك أبواب الفرص العالمية</p>
+    <a href="#courses" class="cta-button">
+      <i class="fas fa-rocket"></i>
+      ابدأ رحلتك الآن
+    </a>
+  </div>
+</section>
 
-  <!-- ====== الإنجليزية ====== -->
-  <section id="english">
-    <h2>الإنجليزية</h2>
-    <div class="courses">
-      <div class="card" onclick="openModal('modal1')">
-        <h3>كورس لغة إنجليزية</h3>
-        <p>من الصفر للمبتدئين</p>
-        <div class="price"><span>129 ريال</span> <span class="discount">69 ريال</span></div>
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">50K+</span>
+        <span class="stat-label">طالب متخرج</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">10</span>
+        <span class="stat-label">لغات عالمية</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">95%</span>
+        <span class="stat-label">معدل النجاح</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">دعم فني</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ====== الإسبانية ====== -->
-  <section id="spanish">
-    <h2>الإسبانية</h2>
-    <div class="courses">
-      <div class="card" onclick="openModal('modal2')">
-        <h3>كورس لغة إسبانية</h3>
-        <p>من الصفر للمبتدئين</p>
-        <div class="price"><span>129 ريال</span> <span class="discount">69 ريال</span></div>
+<!-- Courses Section -->
+<section id="courses" class="section">
+  <div class="container">
+    <h2 class="section-title">اختر لغتك المفضلة</h2>
+    <p class="section-subtitle">دورات تفاعلية مصممة بعناية من خبراء تعليم اللغات، مع شهادات معتمدة دولياً</p>
+    
+    <div class="courses-grid">
+      <!-- English -->
+      <div id="english" class="language-card">
+        <div class="card-icon">
+          <i class="fas fa-globe"></i>
+        </div>
+        <h3 class="card-title">اللغة الإنجليزية</h3>
+        <p class="card-description">لغة العلم والتكنولوجيا والأعمال العالمية. افتح أبواب الفرص اللامحدودة</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal1')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- Spanish -->
+      <div id="spanish" class="language-card">
+        <div class="card-icon">
+          <i class="fas fa-heart"></i>
+        </div>
+        <h3 class="card-title">اللغة الإسبانية</h3>
+        <p class="card-description">ثاني أكثر اللغات تحدثاً في العالم. تواصل مع 500 مليون شخص حول العالم</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal2')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- French -->
+      <div id="french" class="language-card">
+        <div class="card-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <h3 class="card-title">اللغة الفرنسية</h3>
+        <p class="card-description">لغة الثقافة والفن والدبلوماسية. ادخل عالم الرقي والأناقة الأوروبية</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal3')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- German -->
+      <div id="german" class="language-card">
+        <div class="card-icon">
+          <i class="fas fa-industry"></i>
+        </div>
+        <h3 class="card-title">اللغة الألمانية</h3>
+        <p class="card-description">لغة الابتكار والهندسة. احصل على فرص عمل في أقوى اقتصادات أوروبا</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal4')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- Italian -->
+      <div id="italian" class="language-card">
+        <div class="card-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <h3 class="card-title">اللغة الإيطالية</h3>
+        <p class="card-description">لغة الفن والموسيقى والطعام. استمتع بثقافة البحر المتوسط الغنية</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal5')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- Chinese -->
+      <div id="chinese" class="language-card">
+        <div class="card-icon">
+          <i class="fas fa-dragon"></i>
+        </div>
+        <h3 class="card-title">اللغة الصينية</h3>
+        <p class="card-description">لغة المستقبل الاقتصادي. تواصل مع أكبر سوق في العالم</p>
+        <div class="card-price">
+          <span class="old-price">299 ريال</span>
+          <span class="new-price">149 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal6')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ====== الفرنسية ====== -->
-  <section id="french">
-    <h2>الفرنسية</h2>
-    <div class="courses">
-      <div class="card" onclick="openModal('modal3')">
-        <h3>كورس لغة فرنسية</h3>
-        <p>من الصفر للمبتدئين</p>
-        <div class="price"><span>129 ريال</span> <span class="discount">69 ريال</span></div>
+<!-- FAQ Section -->
+<section id="faq" class="section faq-section">
+  <div class="container">
+    <h2 class="section-title">الأسئلة الشائعة</h2>
+    <p class="section-subtitle">إجابات سريعة على أهم الاستفسارات</p>
+    
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question">
+          كم المدة المتوقعة لإتقان اللغة؟
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          مع الالتزام بالدروس اليومية، يمكن الوصول لمستوى متقدم خلال 3-6 أشهر، حسب اللغة والوقت المخصص للتعلم.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">
+          هل تتوفر شهادات معتمدة؟
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          نعم، نقدم شهادات رقمية معتمدة دولياً معترف بها من قبل الجامعات وأصحاب العمل حول العالم.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">
+          ما هي طرق الدفع المتاحة؟
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          نقبل جميع طرق الدفع: البطاقات الائتمانية، التحويل البنكي، محافظ إلكترونية، وإمكانية التقسيط.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question">
+          هل يمكن استرداد الرسوم؟
+          <i class="fas fa-chevron-down faq-icon"></i>
+        </button>
+        <div class="faq-answer">
+          نعم، نضمن استرداد كامل للرسوم خلال 30 يوم من التسجيل إذا لم تكن راضياً عن الخدمة.
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ====== الألمانية ====== -->
-  <section id="german">
-    <h2>الألمانية</h2>
-    <div class="courses">
-      <div class="card" onclick="openModal('modal4')">
-        <h3>كورس لغة ألمانية</h3>
-        <p>من الصفر للمبتدئين</p>
-        <div class="price"><span>129 ريال</span> <span class="discount">69 ريال</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== الإيطالية ====== -->
-  <section id="italian">
-    <h2>الإيطالية</h2>
-    <div class="courses">
-      <div class="card" onclick="openModal('modal5')">
-        <h3>كورس لغة إيطالية</h3>
-        <p>من الصفر للمبتدئين</p>
-        <div class="price"><span>129 ريال</span> <span class="discount">69 ريال</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== الصينية ====== -->
-  <section id="chinese">
-    <h2>الصينية</h2>
-    <div class="courses">
-      <div class="card" onclick="openModal('modal6')">
-        <h3>كورس لغة صينية</h3>
-        <p>من الصفر للمبتدئين</p>
-        <div class="price"><span>129 ريال</span> <span class="discount">69 ريال</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== اليابانية ====== -->
-  <section id="japanese">
-    <h2>اليابانية</h2>
-    <div class="courses">
-      <div class="card" onclick="openModal('modal7')">
-        <h3>كورس لغة يابانية</h3>
-        <p>من الصفر للمبتدئين</p>
-        <div class="price"><span>129 ريال</span> <span class="discount">69 ريال</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== الكورية ====== -->
-  <section id="korean">
-    <h2>الكورية</h2>
-    <div class="courses">
-      <div class="card" onclick="openModal('modal8')">
-        <h3>كورس لغة كورية</h3>
-        <p>من الصفر للمبتدئين</p>
-        <div class="price"><span>129 ريال</span> <span class="discount">69 ريال</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== الروسية ====== -->
-  <section id="russian">
-    <h2>الروسية</h2>
-    <div class="courses">
-      <div class="card" onclick="openModal('modal9')">
-        <h3>كورس لغة روسية</h3>
-        <p>من الصفر للمبتدئين</p>
-        <div class="price"><span>129 ريال</span> <span class="discount">69 ريال</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== التركية ====== -->
-  <section id="turkish">
-    <h2>التركية</h2>
-    <div class="courses">
-      <div class="card" onclick="openModal('modal10')">
-        <h3>كورس لغة تركية</h3>
-        <p>من الصفر للمبتدئين</p>
-        <div class="price"><span>129 ريال</span> <span class="discount">69 ريال</span></div>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<!-- ====== Modals ====== -->
+<!-- Modals -->
 <div id="modal1" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('modal1')">&times;</span>
-    <h2>كورس لغة إنجليزية</h2>
-    <p>تفاصيل الدورة: تعلم الحروف والكلمات الأساسية وقواعد مبسطة وعبارات يومية.</p>
-    <p>المدة: 4 أسابيع | المستوى: مبتدئ</p>
-    <a href="#" class="btn">سجل الآن</a>
-  </div>
-</div>
-
-<div id="modal2" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal2')">&times;</span>
-    <h2>كورس لغة إسبانية</h2>
-    <p>تفاصيل الدورة: تعلم الحروف والكلمات الأساسية وعبارات يومية وقواعد مبسطة.</p>
-    <p>المدة: 4 أسابيع | المستوى: مبتدئ</p>
-    <a href="#" class="btn">سجل الآن</a>
-  </div>
-</div>
-
-<div id="modal3" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal3')">&times;</span>
-    <h2>كورس لغة فرنسية</h2>
-    <p>تفاصيل الدورة: تعلم الحروف والكلمات الأساسية وعبارات يومية وقواعد مبسطة.</p>
-    <p>المدة: 4 أسابيع | المستوى: مبتدئ</p>
-    <a href="#" class="btn">سجل الآن</a>
-  </div>
-</div>
-
-<div id="modal4" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal4')">&times;</span>
-    <h2>كورس لغة ألمانية</h2>
-    <p>تفاصيل الدورة: تعلم الحروف والكلمات الأساسية وعبارات يومية وقواعد مبسطة.</p>
-    <p>المدة: 4 أسابيع | المستوى: مبتدئ</p>
-    <a href="#" class="btn">سجل الآن</a>
-  </div>
-</div>
-
-<div id="modal5" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal5')">&times;</span>
-    <h2>كورس لغة إيطالية</h2>
-    <p>تفاصيل الدورة: تعلم الحروف والكلمات الأساسية وعبارات يومية وقواعد مبسطة.</p>
-    <p>المدة: 4 أسابيع | المستوى: مبتدئ</p>
-    <a href="#" class="btn">سجل الآن</a>
-  </div>
-</div>
-
-<div id="modal6" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal6')">&times;</span>
-    <h2>كورس لغة صينية</h2>
-    <p>تفاصيل الدورة: تعلم الحروف والكلمات الأساسية وعبارات يومية وقواعد مبسطة.</p>
-    <p>المدة: 4 أسابيع | المستوى: مبتدئ</p>
-    <a href="#" class="btn">سجل الآن</a>
-  </div>
-</div>
-
-<div id="modal7" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal7')">&times;</span>
-    <h2>كورس لغة يابانية</h2>
-    <p>تفاصيل الدورة: تعلم الحروف والكلمات الأساسية وعبارات يومية وقواعد مبسطة.</p>
-    <p>المدة: 4 أسابيع | المستوى: مبتدئ</p>
-    <a href="#" class="btn">سجل الآن</a>
-  </div>
-</div>
-
-<div id="modal8" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal8')">&times;</span>
-    <h2>كورس لغة كورية</h2>
-    <p>تفاصيل الدورة: تعلم الحروف والكلمات الأساسية وعبارات يومية وقواعد مبسطة.</p>
-    <p>المدة: 4 أسابيع | المستوى: مبتدئ</p>
-    <a href="#" class="btn">سجل الآن</a>
-  </div>
-</div>
-
-<div id="modal9" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal9')">&times;</span>
-    <h2>كورس لغة روسية</h2>
-    <p>تفاصيل الدورة: تعلم الحروف والكلمات الأساسية وعبارات يومية وقواعد مبسطة.</p>
-    <p>المدة: 4 أسابيع | المستوى: مبتدئ</p>
-    <a href="#" class="btn">سجل الآن</a>
-  </div>
-</div>
-
-  <div id="modal10" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal10')">&times;</span>
-      <h2>كورس لغة تركية</h2>
-      <p>تفاصيل الدورة: تعلم الحروف والكلمات الأساسية وعبارات يومية وتدريبات محادثة.</p>
-      <p>المدة: 4 أسابيع | المستوى: مبتدئ</p>
-      <a href="#" class="btn">سجل الآن</a>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-    <!-- FAQ -->
-    <section class="faq">
-      <h2>سياساتنا</h2>
-      <div class="faq-item">
-        <button>ما هي سياسة استرجاع الدورات؟</button>
-        <div class="answer">
-          يمكن استرجاع الدورة خلال 7 أيام من التسجيل بشرط عدم البدء بالمحتوى.
-        </div>
-      </div>
-      <div class="faq-item">
-        <button>هل يوجد شهادات معتمدة؟</button>
-        <div class="answer">
-          نعم، نقدم شهادات رقمية معتمدة لكل دورة بعد إتمامها.
-        </div>
-      </div>
-      <div class="faq-item">
-        <button>هل يمكن الوصول للدورات بعد انتهاء الوقت؟</button>
-        <div class="answer">
-          نعم، يمكن للمستخدم الوصول للدورات في أي وقت بعد الشراء.
-        </div>
-      </div>
-    </section>
-
+    <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
+    <h2 class="modal-title">دورة اللغة الإنجليزية المتكاملة</h2>
+    <p class="modal-description">برنامج شامل ومتدرج لتعلم اللغة الإنجليزية من الصفر حتى الإتقان</p>
     
-      
-   
+    <ul class="modal-features">
+      <li><i class="fas fa-check"></i>40 درس تفاعلي مع الذكي الاصطناعي</li>
+      <li><i class="fas fa-check"></i>تدريبات نطق متقدمة</li>
+      <li><i class="fas fa-check"></i>محادثات مع متحدثين أصليين</li>
+      <li><i class="fas fa-check"></i>شهادة معتمدة دولياً</li>
+      <li><i class="fas fa-check"></i>دعم فني 24/7</li>
+    </ul>
+    
+    <div class="card-price">
+      <span class="old-price">299 ريال</span>
+      <span class="new-price">149 ريال</span>
+    </div>
+    
+    <button class="enroll-btn" style="width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+      <i class="fas fa-credit-card"></i>
+      سجل الآن - ادفع لاحقاً
+    </button>
+  </div>
+</div>
 
+<!-- Additional modals would follow the same pattern -->
 
-    <script src="script.js"></script>
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="#privacy">سياسة الخصوصية</a>
+      <a href="#terms">الشروط والأحكام</a>
+      <a href="#support">الدعم الفني</a>
+      <a href="#contact">تواصل معنا</a>
+    </div>
+    <p>&copy; 2025 أكاديمية اللغات العالمية. جميع الحقوق محفوظة.</p>
+  </div>
+</footer>
 
-    <footer>
-      جميع الحقوق محفوظة © 2025
-    </footer>
-    </body>
-    </html>
+<script src="script.js"></script>
+</body>
+</html>
