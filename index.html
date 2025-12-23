@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أكاديمية اللغات العالمية - تعلم لغات المستقبل</title>
+<title>سانورا - أكاديمية اللغات الاحترافية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -73,6 +72,23 @@
     z-index: 2;
     max-width: 800px;
     padding: 2rem;
+  }
+
+  .hero-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   }
 
   .hero-title {
@@ -157,12 +173,27 @@
   }
 
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 900;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
   }
 
   .nav-links {
@@ -224,6 +255,35 @@
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* Currency Display */
+  .currency-info {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: var(--white);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    z-index: 999;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    min-width: 200px;
+  }
+
+  .currency-info h4 {
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .current-currency {
+    background: var(--secondary-gradient);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 600;
+    text-align: center;
   }
 
   /* Language Cards */
@@ -634,6 +694,12 @@
       padding: 2rem;
       margin: 1rem;
     }
+
+    .currency-info {
+      position: static;
+      margin: 1rem auto;
+      width: fit-content;
+    }
   }
 
   @media (max-width: 480px) {
@@ -656,7 +722,10 @@
 <!-- Navigation -->
 <nav class="navbar">
   <div class="nav-content">
-    <div class="logo">🌟 أكاديمية اللغات الذهبية 🌟</div>
+    <div class="logo">
+      <div class="logo-icon">S</div>
+      سانورا - أكاديمية اللغات
+    </div>
     <ul class="nav-links">
       <li><a href="#courses">الدورات</a></li>
       <li><a href="#about">من نحن</a></li>
@@ -666,14 +735,23 @@
   </div>
 </nav>
 
+<!-- Currency Information -->
+<div class="currency-info">
+  <h4>السعر في بلدك:</h4>
+  <div class="current-currency" id="currentCurrency">
+    99 ريال سعودي
+  </div>
+</div>
+
 <!-- Hero Section -->
 <section class="hero-section">
   <div class="hero-content">
-    <h1 class="hero-title">✨ تعلم لغات المستقبل الذهبي ✨</h1>
-    <p class="hero-subtitle">🌟 انضم لأكثر من 50,000 طالب واكتسب مهارات لغوية تفتح لك أبواب الفرص الذهبية العالمية 🌟</p>
+    <div class="hero-logo">S</div>
+    <h1 class="hero-title">سانورا</h1>
+    <p class="hero-subtitle">أكاديمية اللغات الاحترافية - تعلم لغات المستقبل مع أفضل المدربين المعتمدين دولياً</p>
     <a href="#courses" class="cta-button">
-      <i class="fas fa-star"></i>
-      ابدأ رحلتك الذهبية الآن
+      <i class="fas fa-graduation-cap"></i>
+      ابدأ رحلتك التعليمية
     </a>
   </div>
 </section>
@@ -684,19 +762,19 @@
     <div class="stats-grid">
       <div class="stat-item">
         <span class="stat-number">50K+</span>
-        <span class="stat-label">⭐ طالب متميز</span>
+        <span class="stat-label">طالب متميز</span>
       </div>
       <div class="stat-item">
         <span class="stat-number">25</span>
-        <span class="stat-label">🌍 لغة عالمية</span>
+        <span class="stat-label">لغة عالمية</span>
       </div>
       <div class="stat-item">
         <span class="stat-number">98%</span>
-        <span class="stat-label">🏆 معدل النجاح</span>
+        <span class="stat-label">معدل النجاح</span>
       </div>
       <div class="stat-item">
         <span class="stat-number">24/7</span>
-        <span class="stat-label">💎 دعم ذهبي</span>
+        <span class="stat-label">دعم فني</span>
       </div>
     </div>
   </div>
@@ -705,23 +783,23 @@
 <!-- Courses Section -->
 <section id="courses" class="section">
   <div class="container">
-    <h2 class="section-title">🌟 اختر لغتك المفضلة 🌟</h2>
-    <p class="section-subtitle">💫 دورات تفاعلية مصممة بعناية من خبراء تعليم اللغات، مع شهادات ذهبية معتمدة دولياً 💫</p>
-    
+    <h2 class="section-title">اختر لغتك المفضلة</h2>
+    <p class="section-subtitle">دورات تفاعلية مصممة بعناية من خبراء تعليم اللغات، مع شهادات معتمدة دولياً</p>
+
     <div class="courses-grid">
       <!-- English -->
       <div id="english" class="language-card">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/gb.png" alt="British Flag" />
         </div>
-        <h3 class="card-title">🇬🇧 اللغة الإنجليزية الذهبية</h3>
-        <p class="card-description">✨ لغة العلم والتكنولوجيا والأعمال العالمية. افتح أبواب الفرص الذهبية اللامحدودة</p>
+        <h3 class="card-title">اللغة الإنجليزية</h3>
+        <p class="card-description">لغة العلم والتكنولوجيا والأعمال العالمية. افتح أبواب الفرص اللامحدودة</p>
         <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
+          <span class="old-price currency-old">199 ريال</span>
+          <span class="new-price currency-new">99 ريال</span>
         </div>
         <button class="enroll-btn" onclick="openModal('modal1')">
-          <i class="fas fa-crown"></i>
+          <i class="fas fa-play"></i>
           ابدأ الآن
         </button>
       </div>
@@ -731,14 +809,14 @@
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/es.png" alt="Spanish Flag" />
         </div>
-        <h3 class="card-title">🇪🇸 اللغة الإسبانية الذهبية</h3>
-        <p class="card-description">💫 ثاني أكثر اللغات تحدثاً في العالم. تواصل مع 500 مليون شخص حول العالم</p>
+        <h3 class="card-title">اللغة الإسبانية</h3>
+        <p class="card-description">ثاني أكثر اللغات تحدثاً في العالم. تواصل مع 500 مليون شخص حول العالم</p>
         <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
+          <span class="old-price currency-old">199 ريال</span>
+          <span class="new-price currency-new">99 ريال</span>
         </div>
         <button class="enroll-btn" onclick="openModal('modal2')">
-          <i class="fas fa-crown"></i>
+          <i class="fas fa-play"></i>
           ابدأ الآن
         </button>
       </div>
@@ -748,14 +826,14 @@
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" />
         </div>
-        <h3 class="card-title">🇫🇷 اللغة الفرنسية الذهبية</h3>
-        <p class="card-description">🌟 لغة الثقافة والفن والدبلوماسية. ادخل عالم الرقي والأناقة الأوروبية الذهبية</p>
+        <h3 class="card-title">اللغة الفرنسية</h3>
+        <p class="card-description">لغة الثقافة والفن والدبلوماسية. ادخل عالم الرقي والأناقة الأوروبية</p>
         <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
+          <span class="old-price currency-old">199 ريال</span>
+          <span class="new-price currency-new">99 ريال</span>
         </div>
         <button class="enroll-btn" onclick="openModal('modal3')">
-          <i class="fas fa-crown"></i>
+          <i class="fas fa-play"></i>
           ابدأ الآن
         </button>
       </div>
@@ -765,14 +843,14 @@
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/de.png" alt="German Flag" />
         </div>
-        <h3 class="card-title">🇩🇪 اللغة الألمانية الذهبية</h3>
-        <p class="card-description">💎 لغة الابتكار والهندسة. احصل على فرص عمل ذهبية في أقوى اقتصادات أوروبا</p>
+        <h3 class="card-title">اللغة الألمانية</h3>
+        <p class="card-description">لغة الابتكار والهندسة. احصل على فرص عمل في أقوى اقتصادات أوروبا</p>
         <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
+          <span class="old-price currency-old">199 ريال</span>
+          <span class="new-price currency-new">99 ريال</span>
         </div>
         <button class="enroll-btn" onclick="openModal('modal4')">
-          <i class="fas fa-crown"></i>
+          <i class="fas fa-play"></i>
           ابدأ الآن
         </button>
       </div>
@@ -782,14 +860,14 @@
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/it.png" alt="Italian Flag" />
         </div>
-        <h3 class="card-title">🇮🇹 اللغة الإيطالية الذهبية</h3>
-        <p class="card-description">✨ لغة الفن والموسيقى والطعام. استمتع بثقافة البحر المتوسط الذهبية الغنية</p>
+        <h3 class="card-title">اللغة الإيطالية</h3>
+        <p class="card-description">لغة الفن والموسيقى والطعام. استمتع بثقافة البحر المتوسط الغنية</p>
         <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
+          <span class="old-price currency-old">199 ريال</span>
+          <span class="new-price currency-new">99 ريال</span>
         </div>
         <button class="enroll-btn" onclick="openModal('modal5')">
-          <i class="fas fa-crown"></i>
+          <i class="fas fa-play"></i>
           ابدأ الآن
         </button>
       </div>
@@ -799,14 +877,14 @@
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/cn.png" alt="Chinese Flag" />
         </div>
-        <h3 class="card-title">🇨🇳 اللغة الصينية الذهبية</h3>
-        <p class="card-description">🌟 لغة المستقبل الاقتصادي الذهبي. تواصل مع أكبر سوق في العالم</p>
+        <h3 class="card-title">اللغة الصينية</h3>
+        <p class="card-description">لغة المستقبل الاقتصادي. تواصل مع أكبر سوق في العالم</p>
         <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
+          <span class="old-price currency-old">199 ريال</span>
+          <span class="new-price currency-new">99 ريال</span>
         </div>
         <button class="enroll-btn" onclick="openModal('modal6')">
-          <i class="fas fa-crown"></i>
+          <i class="fas fa-play"></i>
           ابدأ الآن
         </button>
       </div>
@@ -816,14 +894,14 @@
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/jp.png" alt="Japanese Flag" />
         </div>
-        <h3 class="card-title">🇯🇵 اللغة اليابانية الذهبية</h3>
-        <p class="card-description">💫 لغة التكنولوجيا والثقافة الآسيوية. انفتح على عالم الإبداع والابتكار الذهبي</p>
+        <h3 class="card-title">اللغة اليابانية</h3>
+        <p class="card-description">لغة التكنولوجيا والثقافة الآسيوية. انفتح على عالم الإبداع والابتكار</p>
         <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
+          <span class="old-price currency-old">199 ريال</span>
+          <span class="new-price currency-new">99 ريال</span>
         </div>
         <button class="enroll-btn" onclick="openModal('modal7')">
-          <i class="fas fa-crown"></i>
+          <i class="fas fa-play"></i>
           ابدأ الآن
         </button>
       </div>
@@ -833,31 +911,14 @@
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/br.png" alt="Brazilian Flag" />
         </div>
-        <h3 class="card-title">🇧🇷 اللغة البرتغالية الذهبية</h3>
-        <p class="card-description">🌟 لغة البرازيل والبرتغال. اكتشف ثقافات أمريكا الجنوبية الذهبية الغنية</p>
+        <h3 class="card-title">اللغة البرتغالية</h3>
+        <p class="card-description">لغة البرازيل والبرتغال. اكتشف ثقافات أمريكا الجنوبية الغنية</p>
         <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
+          <span class="old-price currency-old">199 ريال</span>
+          <span class="new-price currency-new">99 ريال</span>
         </div>
         <button class="enroll-btn" onclick="openModal('modal8')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Russian -->
-      <div id="russian" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/ru.png" alt="Russian Flag" />
-        </div>
-        <h3 class="card-title">🇷🇺 اللغة الروسية الذهبية</h3>
-        <p class="card-description">💎 لغة أوراسيا الواسعة. افتح أبواب التجارة والعمل الذهبية في روسيا ودول الاتحاد</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal9')">
-          <i class="fas fa-crown"></i>
+          <i class="fas fa-play"></i>
           ابدأ الآن
         </button>
       </div>
@@ -867,269 +928,31 @@
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/kr.png" alt="Korean Flag" />
         </div>
-        <h3 class="card-title">🇰🇷 اللغة الكورية الذهبية</h3>
-        <p class="card-description">✨ لغة الكيبوب والدراما. انغمس في الثقافة الكورية الذهبية والتقنيات المتطورة</p>
+        <h3 class="card-title">اللغة الكورية</h3>
+        <p class="card-description">لغة الكيبوب والدراما. انغمس في الثقافة الكورية والتقنيات المتطورة</p>
         <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
+          <span class="old-price currency-old">199 ريال</span>
+          <span class="new-price currency-new">99 ريال</span>
+        </div>
+        <button class="enroll-btn" onclick="openModal('modal9')">
+          <i class="fas fa-play"></i>
+          ابدأ الآن
+        </button>
+      </div>
+
+      <!-- Russian -->
+      <div id="russian" class="language-card">
+        <div class="card-flag">
+          <img src="https://flagcdn.com/w160/ru.png" alt="Russian Flag" />
+        </div>
+        <h3 class="card-title">اللغة الروسية</h3>
+        <p class="card-description">لغة أوراسيا الواسعة. افتح أبواب التجارة والعمل في روسيا ودول الاتحاد</p>
+        <div class="card-price">
+          <span class="old-price currency-old">199 ريال</span>
+          <span class="new-price currency-new">99 ريال</span>
         </div>
         <button class="enroll-btn" onclick="openModal('modal10')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Dutch -->
-      <div id="dutch" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/nl.png" alt="Dutch Flag" />
-        </div>
-        <h3 class="card-title">🇳🇱 اللغة الهولندية الذهبية</h3>
-        <p class="card-description">🌟 لغة هولندا وبلجيكا. استكشف عالم التجارة الأوروبية والفرص الاستثمارية الذهبية</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal11')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Turkish -->
-      <div id="turkish" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/tr.png" alt="Turkish Flag" />
-        </div>
-        <h3 class="card-title">🇹🇷 اللغة التركية الذهبية</h3>
-        <p class="card-description">💫 لغة الجسر بين آسيا وأوروبا. اكتشف تاريخ وثقافة الإمبراطورية العثمانية الذهبية</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal12')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Hindi -->
-      <div id="hindi" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/in.png" alt="Indian Flag" />
-        </div>
-        <h3 class="card-title">🇮🇳 اللغة الهندية الذهبية</h3>
-        <p class="card-description">🌟 لغة بوليود والتكنولوجيا. تواصل مع أكثر من مليار شخص في الهند</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal13')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Arabic Modern -->
-      <div id="arabic" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/sa.png" alt="Saudi Flag" />
-        </div>
-        <h3 class="card-title">🇸🇦 اللغة العربية الحديثة</h3>
-        <p class="card-description">💎 لغة الضاد والحضارة. أتقن الفصحى الحديثة للأعمال والمؤتمرات الدولية</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal14')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Greek -->
-      <div id="greek" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/gr.png" alt="Greek Flag" />
-        </div>
-        <h3 class="card-title">🇬🇷 اللغة اليونانية الذهبية</h3>
-        <p class="card-description">✨ لغة الفلسفة والتاريخ القديم. اكتشف أصول الحضارة الغربية</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal15')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Swedish -->
-      <div id="swedish" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/se.png" alt="Swedish Flag" />
-        </div>
-        <h3 class="card-title">🇸🇪 اللغة السويدية الذهبية</h3>
-        <p class="card-description">🌟 لغة الابتكار الاسكندنافي. انفتح على فرص العمل في بلدان الرفاهية</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal16')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Norwegian -->
-      <div id="norwegian" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/no.png" alt="Norwegian Flag" />
-        </div>
-        <h3 class="card-title">🇳🇴 اللغة النرويجية الذهبية</h3>
-        <p class="card-description">💫 لغة الطبيعة الخلابة والنفط. استكشف فرص العمل في أغنى دول العالم</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal17')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Finnish -->
-      <div id="finnish" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/fi.png" alt="Finnish Flag" />
-        </div>
-        <h3 class="card-title">🇫🇮 اللغة الفنلندية الذهبية</h3>
-        <p class="card-description">🌟 لغة التعليم الأول عالمياً. تعلم من أفضل نظام تعليمي في العالم</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal18')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Danish -->
-      <div id="danish" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/dk.png" alt="Danish Flag" />
-        </div>
-        <h3 class="card-title">🇩🇰 اللغة الدنماركية الذهبية</h3>
-        <p class="card-description">💎 لغة السعادة والهيجا. اكتشف سر أسعد شعوب العالم</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal19')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Polish -->
-      <div id="polish" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/pl.png" alt="Polish Flag" />
-        </div>
-        <h3 class="card-title">🇵🇱 اللغة البولندية الذهبية</h3>
-        <p class="card-description">✨ لغة أوروبا الشرقية الناشئة. افتح أسواق جديدة في قلب أوروبا</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal20')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Czech -->
-      <div id="czech" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/cz.png" alt="Czech Flag" />
-        </div>
-        <h3 class="card-title">🇨🇿 اللغة التشيكية الذهبية</h3>
-        <p class="card-description">🌟 لغة براغ الجميلة. استكشف جواهر أوروبا الوسطى المخفية</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal21')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Hungarian -->
-      <div id="hungarian" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/hu.png" alt="Hungarian Flag" />
-        </div>
-        <h3 class="card-title">🇭🇺 اللغة المجرية الذهبية</h3>
-        <p class="card-description">💫 لغة بودابست الساحرة. اكتشف تقاليد الماجيار القديمة</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal22')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Romanian -->
-      <div id="romanian" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/ro.png" alt="Romanian Flag" />
-        </div>
-        <h3 class="card-title">🇷🇴 اللغة الرومانية الذهبية</h3>
-        <p class="card-description">🌟 لغة دراكولا وترانسيلفانيا. اكتشف أسرار البلقان الرومانسية</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal23')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Thai -->
-      <div id="thai" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/th.png" alt="Thai Flag" />
-        </div>
-        <h3 class="card-title">🇹🇭 اللغة التايلاندية الذهبية</h3>
-        <p class="card-description">💎 لغة أرض الابتسامة. انغمس في ثقافة آسيا الاستوائية الساحرة</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal24')">
-          <i class="fas fa-crown"></i>
-          ابدأ الآن
-        </button>
-      </div>
-
-      <!-- Vietnamese -->
-      <div id="vietnamese" class="language-card">
-        <div class="card-flag">
-          <img src="https://flagcdn.com/w160/vn.png" alt="Vietnamese Flag" />
-        </div>
-        <h3 class="card-title">🇻🇳 اللغة الفيتنامية الذهبية</h3>
-        <p class="card-description">✨ لغة التنين الآسيوي الصاعد. استكشف الاقتصاد الناشئ في جنوب آسيا</p>
-        <div class="card-price">
-          <span class="old-price">299 ريال</span>
-          <span class="new-price">⭐ 149 ريال ⭐</span>
-        </div>
-        <button class="enroll-btn" onclick="openModal('modal25')">
-          <i class="fas fa-crown"></i>
+          <i class="fas fa-play"></i>
           ابدأ الآن
         </button>
       </div>
@@ -1140,47 +963,47 @@
 <!-- FAQ Section -->
 <section id="faq" class="section faq-section">
   <div class="container">
-    <h2 class="section-title">💫 الأسئلة الذهبية الشائعة 💫</h2>
-    <p class="section-subtitle">✨ إجابات سريعة على أهم الاستفسارات الذهبية ✨</p>
-    
+    <h2 class="section-title">الأسئلة الشائعة</h2>
+    <p class="section-subtitle">إجابات سريعة على أهم الاستفسارات</p>
+
     <div class="faq-container">
       <div class="faq-item">
         <button class="faq-question">
-          🌟 كم المدة المتوقعة لإتقان اللغة الذهبية؟
+          كم المدة المتوقعة لإتقان اللغة؟
           <i class="fas fa-chevron-down faq-icon"></i>
         </button>
         <div class="faq-answer">
-          مع الالتزام بالدروس اليومية الذهبية، يمكن الوصول لمستوى متقدم خلال 3-6 أشهر، حسب اللغة والوقت المخصص للتعلم الذهبي.
+          مع الالتزام بالدروس اليومية، يمكن الوصول لمستوى متقدم خلال 3-6 أشهر، حسب اللغة والوقت المخصص للتعلم.
         </div>
       </div>
-      
+
       <div class="faq-item">
         <button class="faq-question">
-          🏆 هل تتوفر شهادات ذهبية معتمدة؟
+          هل تتوفر شهادات معتمدة؟
           <i class="fas fa-chevron-down faq-icon"></i>
         </button>
         <div class="faq-answer">
-          نعم، نقدم شهادات ذهبية رقمية معتمدة دولياً معترف بها من قبل الجامعات وأصحاب العمل حول العالم.
+          نعم، نقدم شهادات رقمية معتمدة دولياً معترف بها من قبل الجامعات وأصحاب العمل حول العالم.
         </div>
       </div>
-      
+
       <div class="faq-item">
         <button class="faq-question">
-          💳 ما هي طرق الدفع الذهبية المتاحة؟
+          ما هي طرق الدفع المتاحة؟
           <i class="fas fa-chevron-down faq-icon"></i>
         </button>
         <div class="faq-answer">
-          نقبل جميع طرق الدفع الذهبية: البطاقات الائتمانية، التحويل البنكي، محافظ إلكترونية، وإمكانية التقسيط الذهبي.
+          نقبل جميع طرق الدفع: البطاقات الائتمانية، التحويل البنكي، محافظ إلكترونية، وإمكانية التقسيط.
         </div>
       </div>
-      
+
       <div class="faq-item">
         <button class="faq-question">
-          💰 هل يمكن استرداد الرسوم الذهبية؟
+          هل يمكن استرداد الرسوم؟
           <i class="fas fa-chevron-down faq-icon"></i>
         </button>
         <div class="faq-answer">
-          نعم، نضمن استرداد ذهبي كامل للرسوم خلال 30 يوم من التسجيل إذا لم تكن راضياً عن الخدمة الذهبية.
+          نعم، نضمن استرداد كامل للرسوم خلال 30 يوم من التسجيل إذا لم تكن راضياً عن الخدمة.
         </div>
       </div>
     </div>
@@ -1191,24 +1014,24 @@
 <div id="modal1" class="modal">
   <div class="modal-content">
     <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
-    <h2 class="modal-title">🌟 دورة اللغة الإنجليزية الذهبية المتكاملة 🌟</h2>
-    <p class="modal-description">✨ برنامج شامل ومتدرج لتعلم اللغة الإنجليزية من الصفر حتى الإتقان الذهبي ✨</p>
-    
+    <h2 class="modal-title">دورة اللغة الإنجليزية المتكاملة</h2>
+    <p class="modal-description">برنامج شامل ومتدرج لتعلم اللغة الإنجليزية من الصفر حتى الإتقان</p>
+
     <ul class="modal-features">
-      <li><i class="fas fa-star"></i>40 درس تفاعلي ذهبي مع الذكاء الاصطناعي</li>
-      <li><i class="fas fa-star"></i>تدريبات نطق ذهبية متقدمة</li>
-      <li><i class="fas fa-star"></i>محادثات مع متحدثين أصليين ذهبيين</li>
-      <li><i class="fas fa-star"></i>شهادة ذهبية معتمدة دولياً</li>
-      <li><i class="fas fa-star"></i>دعم فني ذهبي 24/7</li>
+      <li><i class="fas fa-check"></i>40 درس تفاعلي مع الذكاء الاصطناعي</li>
+      <li><i class="fas fa-check"></i>تدريبات نطق متقدمة</li>
+      <li><i class="fas fa-check"></i>محادثات مع متحدثين أصليين</li>
+      <li><i class="fas fa-check"></i>شهادة معتمدة دولياً</li>
+      <li><i class="fas fa-check"></i>دعم فني 24/7</li>
     </ul>
-    
+
     <div class="card-price">
-      <span class="old-price">299 ريال</span>
-      <span class="new-price">⭐ 149 ريال ⭐</span>
+      <span class="old-price currency-old">199 ريال</span>
+      <span class="new-price currency-new">99 ريال</span>
     </div>
-    
+
     <button class="enroll-btn" style="width: 100%;">
-      <i class="fas fa-crown"></i>
+      <i class="fas fa-credit-card"></i>
       سجل الآن - ادفع لاحقاً
     </button>
   </div>
@@ -1218,12 +1041,12 @@
 <footer class="footer">
   <div class="footer-content">
     <div class="footer-links">
-      <a href="#privacy">🔒 سياسة الخصوصية الذهبية</a>
-      <a href="#terms">📋 الشروط والأحكام الذهبية</a>
-      <a href="#support">💎 الدعم الفني الذهبي</a>
-      <a href="#contact">📞 تواصل معنا</a>
+      <a href="#privacy">سياسة الخصوصية</a>
+      <a href="#terms">الشروط والأحكام</a>
+      <a href="#support">الدعم الفني</a>
+      <a href="#contact">تواصل معنا</a>
     </div>
-    <p>✨ &copy; 2025 أكاديمية اللغات الذهبية العالمية. جميع الحقوق الذهبية محفوظة. ✨</p>
+    <p>&copy; 2025 سانورا - أكاديمية اللغات. جميع الحقوق محفوظة.</p>
   </div>
 </footer>
 
