@@ -257,34 +257,7 @@
     margin-right: auto;
   }
 
-  /* Currency Display */
-  .currency-info {
-    position: fixed;
-    top: 100px;
-    right: 20px;
-    background: var(--white);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    z-index: 999;
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    min-width: 200px;
-  }
-
-  .currency-info h4 {
-    color: var(--text-dark);
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-  }
-
-  .current-currency {
-    background: var(--secondary-gradient);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    font-weight: 600;
-    text-align: center;
-  }
+  
 
   /* Language Cards */
   .courses-grid {
@@ -695,11 +668,7 @@
       margin: 1rem;
     }
 
-    .currency-info {
-      position: static;
-      margin: 1rem auto;
-      width: fit-content;
-    }
+    
   }
 
   @media (max-width: 480px) {
@@ -723,7 +692,9 @@
 <nav class="navbar">
   <div class="nav-content">
     <div class="logo">
-      <div class="logo-icon">S</div>
+      <div class="logo-icon">
+        <img src="https://i.ibb.co/y9VCs3H/photo-2025-12-24-00-07-34.jpg" alt="شعار سانورا" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+      </div>
       سانورا - أكاديمية اللغات
     </div>
     <ul class="nav-links">
@@ -735,18 +706,14 @@
   </div>
 </nav>
 
-<!-- Currency Information -->
-<div class="currency-info">
-  <h4>السعر في بلدك:</h4>
-  <div class="current-currency" id="currentCurrency">
-    99 ريال سعودي
-  </div>
-</div>
+
 
 <!-- Hero Section -->
 <section class="hero-section">
   <div class="hero-content">
-    <div class="hero-logo">S</div>
+    <div class="hero-logo">
+      <img src="https://i.ibb.co/y9VCs3H/photo-2025-12-24-00-07-34.jpg" alt="شعار سانورا" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+    </div>
     <h1 class="hero-title">سانورا</h1>
     <p class="hero-subtitle">أكاديمية اللغات الاحترافية - تعلم لغات المستقبل مع أفضل المدربين المعتمدين دولياً</p>
     <a href="#courses" class="cta-button">
