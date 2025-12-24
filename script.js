@@ -97,6 +97,16 @@ function updatePriceDisplay() {
     });
 }
 
+// Footer modal functionality
+function openFooterModal(modalType) {
+    const modalId = modalType + '-modal';
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize currency detection

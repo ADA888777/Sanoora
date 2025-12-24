@@ -519,6 +519,12 @@
     transform: rotate(180deg);
   }
 
+  /* Email link hover effect */
+  .email-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow) !important;
+  }
+
   /* Modal Styles */
   .modal {
     display: none;
@@ -927,6 +933,20 @@
   </div>
 </section>
 
+<!-- Contact Section -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-simple" style="max-width: 600px; margin: 0 auto; text-align: center; background: var(--white); padding: 3rem; border-radius: var(--border-radius); box-shadow: var(--shadow); border: 2px solid rgba(255, 215, 0, 0.2);">
+      <h3 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">تواصل مع sanora مباشرة</h3>
+      <p style="color: var(--text-light); margin-bottom: 1.5rem; font-size: 1.1rem;">للاستفسار عن الدورات أو الشراء:</p>
+      <a href="mailto:hshmhshm72@gmail.com" class="email-link" style="display: inline-block; padding: 1rem 2rem; background: var(--primary-gradient); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; margin-bottom: 1.5rem; transition: all 0.3s ease; box-shadow: var(--shadow);">
+        hshmhshm72@gmail.com
+      </a>
+      <p style="color: var(--success); font-weight: 600; font-size: 1rem;">✅ رد خلال 24 ساعة</p>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ Section -->
 <section id="faq" class="section faq-section">
   <div class="container">
@@ -1008,14 +1028,50 @@
 <footer class="footer">
   <div class="footer-content">
     <div class="footer-links">
-      <a href="#privacy">سياسة الخصوصية</a>
-      <a href="#terms">الشروط والأحكام</a>
-      <a href="#support">الدعم الفني</a>
-      <a href="#contact">تواصل معنا</a>
+      <a href="#" onclick="openFooterModal('privacy')">🔒 سياسة الخصوصية</a>
+      <a href="#" onclick="openFooterModal('terms')">📄 الشروط والأحكام</a>
+      <a href="#" onclick="openFooterModal('support')">🛠️ الدعم الفني</a>
+      <a href="#" onclick="openFooterModal('contact')">📞 تواصل معنا</a>
     </div>
     <p>&copy; 2025 سانورا - أكاديمية اللغات. جميع الحقوق محفوظة.</p>
+    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+      تم التطوير بواسطة <a href="https://aba787.github.io/My-profile/" target="_blank" style="color: #FFD700; text-decoration: none; font-weight: 600;">Aba Tech</a>
+    </p>
   </div>
 </footer>
+
+<!-- Footer Modals -->
+<div id="privacy-modal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal('privacy-modal')">&times;</button>
+    <h2 class="modal-title">🔒 سياسة الخصوصية</h2>
+    <p class="modal-description">نحن نحترم خصوصيتك. لا نجمع أي بيانات شخصية.</p>
+  </div>
+</div>
+
+<div id="terms-modal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal('terms-modal')">&times;</button>
+    <h2 class="modal-title">📄 الشروط والأحكام</h2>
+    <p class="modal-description">الدفع نهائي. لا استرجاع أموال. يجب الالتزام بجميع الشروط والأحكام المنصوص عليها في الدورة التعليمية.</p>
+  </div>
+</div>
+
+<div id="support-modal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal('support-modal')">&times;</button>
+    <h2 class="modal-title">🛠️ الدعم الفني</h2>
+    <p class="modal-description">للاستفسارات: <a href="mailto:hshmhshm72@gmail.com" style="color: #FFD700;">hshmhshm72@gmail.com</a></p>
+  </div>
+</div>
+
+<div id="contact-modal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal('contact-modal')">&times;</button>
+    <h2 class="modal-title">📞 تواصل معنا</h2>
+    <p class="modal-description">البريد الإلكتروني: <a href="mailto:hshmhshm72@gmail.com" style="color: #FFD700;">hshmhshm72@gmail.com</a></p>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
