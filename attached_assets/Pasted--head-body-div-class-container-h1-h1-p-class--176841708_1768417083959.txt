@@ -1,0 +1,132 @@
+</head>
+<body>
+    <div class="container">
+        <h1>إتمام عملية الشراء</h1>
+        <p class="description">اختر طريقة الدفع المناسبة لك لإكمال شراء الدورة التعليمية</p>
+        
+        <div class="payment-options">
+            <div class="payment-option apple-pay" data-method="apple-pay">
+                <div class="payment-icon">✅</div>
+                <div class="payment-info">
+                    <h3>الدفع عبر Apple Pay</h3>
+                    <p>سأقوم بالدفع عبر Apple Pay</p>
+                </div>
+            </div>
+            
+            <div class="payment-option bank-transfer" data-method="bank-transfer">
+                <div class="payment-icon">💳</div>
+                <div class="payment-info">
+                    <h3>التحويل البنكي</h3>
+                    <p>سأقوم بالتحويل البنكي</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h4>⚠️ ملاحظة مهمة:</h4>
+            <p>بعد اختيار طريقة الدفع، سيتم توجيهك مباشرة إلى حسابنا على تليجرام لإتمام العملية. الرجاء إرسال رسالة تأكيد للبدء.</p>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="loader"></div>
+            <p>جاري التوجيه إلى تليجرام...</p>
+        </div>
+        
+        <button id="confirmBtn" class="confirm-btn" disabled>تأكيد والمتابعة إلى تليجرام</button>
+        
+        <div class="telegram-info">
+            <p>سيتم توجيهك إلى حسابنا على تليجرام لإتمام عملية الدفع:</p>
+            <a href="https://t.me/Ada778877" target="_blank" class="telegram-link">@Ada778877</a>
+        </div>
+    </div>
+
+    <script>
+        // بيانات النظام
+        const telegramUsername = "@Ada778877";
+        const telegramURL = `https://t.me/${telegramUsername.replace('@', '')}`;
+        let selectedPaymentMethod = null;
+        
+        // عناصر الواجهة
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        const confirmBtn = document.getElementById('confirmBtn');
+        const loadingElement = document.getElementById('loading');
+        
+        // اختيار طريقة الدفع
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // إزالة التحديد من جميع الخيارات
+                paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                
+                // تحديد الخيار الحالي
+                this.classList.add('selected');
+                selectedPaymentMethod = this.getAttribute('data-method');
+                
+                // تفعيل زر التأكيد
+                confirmBtn.disabled = false;
+                confirmBtn.textContent = selectedPaymentMethod === 'apple-pay' 
+                    ? 'المتابعة إلى تليجرام (Apple Pay)' 
+                    : 'المتابعة إلى تليجرام (التحويل البنكي)';
+            });
+        });
+        
+        // تأكيد طريقة الدفظ والانتقال إلى تليجرام
+        confirmBtn.addEventListener('click', function() {
+            if (!selectedPaymentMethod) return;
+            
+            // إظهار رسالة التحميل
+            confirmBtn.style.display = 'none';
+            loadingElement.style.display = 'block';
+            
+            // بيانات المستخدم (يمكن جلبها من نظام التسجيل)
+            const userData = {
+                name: prompt("الرجاء إدخال اسمك:", "مشتري الدورة") || "مشتري الدورة",
+                email: prompt("الرجاء إدخال بريدك الإلكتروني:", "") || "لم يتم التزويد",
+                method: selectedPaymentMethod === 'apple-pay' ? "Apple Pay" : "التحويل البنكي",
+                timestamp: new Date().toLocaleString('ar-SA'),
+                course: "الدورة التعليمية",
+                price: "XXX ريال" // يمكن تحديد السعر هنا
+            };
+            
+            // إعداد رسالة Telegram
+            let telegramMessage = `🔔 طلب شراء جديد - ${userData.method}\n\n`;
+            telegramMessage += `👤 الاسم: ${userData.name}\n`;
+            telegramMessage += `📧 البريد: ${userData.email}\n`;
+            telegramMessage += `💰 طريقة الدفع: ${userData.method}\n`;
+            telegramMessage += `💵 المبلغ: ${userData.price}\n`;
+            telegramMessage += `📚 المنتج: ${userData.course}\n`;
+            telegramMessage += `📅 الوقت: ${userData.timestamp}\n\n`;
+            telegramMessage += `📍 تم إرسال هذا الطلب من موقع الويب`;
+            
+            // تشفير الرسالة للتضمين في الرابط
+            const encodedMessage = encodeURIComponent(telegramMessage);
+            
+            // الانتقال إلى Telegram مع الرسالة بعد تأخير بسيط
+            setTimeout(() => {
+                window.location.href = `${telegramURL}?text=${encodedMessage}`;
+            }, 1500);
+            
+            // حفظ البيانات محلياً (اختياري)
+            saveOrderLocally(userData);
+        });
+        
+        // دالة لحفظ الطلب محلياً (للتتبع)
+        function saveOrderLocally(orderData) {
+            const orders = JSON.parse(localStorage.getItem('course_orders') || '[]');
+            orderData.id = Date.now();
+            orderData.status = 'pending';
+            orders.push(orderData);
+            localStorage.setItem('course_orders', JSON.stringify(orders));
+            console.log('تم حفظ الطلب محلياً:', orderData);
+        }
+        
+        // اختيار طريقة الدفع الافتراضية (التحويل البنكي)
+        document.querySelector('.bank-transfer').click();
+        
+        // إضافة تأثيرات إضافية
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('نظام الدفع جاهز للاستخدام');
+            console.log('سيتم توجيه جميع المستخدمين إلى:', telegramURL);
+        });
+    </script>
+</body>
+</html>
