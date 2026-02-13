@@ -3,74 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إتمام عملية الشراء</title>
+    <title>الدورات التدريبية</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>إتمام عملية الشراء</h1>
-        <p class="description">اختر طريقة الدفع المناسبة لك لإكمال شراء الدورة التعليمية</p>
-        
-        <!-- نموذج بيانات المستخدم -->
-        <div class="user-form" id="userForm">
-            <h3>معلومات المشتري</h3>
-            <div class="form-group">
-                <label for="userName">الاسم الكامل *</label>
-                <input type="text" id="userName" placeholder="أدخل اسمك الكامل" required>
-            </div>
-            <div class="form-group">
-                <label for="userEmail">البريد الإلكتروني *</label>
-                <input type="email" id="userEmail" placeholder="example@email.com" required>
-            </div>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title">الدورات التدريبية</h1>
+            <p class="site-subtitle">اختر الدورة المناسبة لك وابدأ رحلة التعلم الآن</p>
         </div>
+    </header>
 
-        <div class="payment-options">
-            <div class="payment-option apple-pay" data-method="apple-pay">
-                <div class="payment-icon">🍎</div>
-                <div class="payment-info">
-                    <h3>الدفع عبر Apple Pay</h3>
-                    <p>سأقوم بالدفع عبر Apple Pay</p>
-                </div>
-                <div class="check-mark">✓</div>
-            </div>
-            
-            <div class="payment-option bank-transfer" data-method="bank-transfer">
-                <div class="payment-icon">🏦</div>
-                <div class="payment-info">
-                    <h3>التحويل البنكي</h3>
-                    <p>سأقوم بالتحويل البنكي</p>
-                </div>
-                <div class="check-mark">✓</div>
-            </div>
+    <main class="courses-container">
+        <div class="courses-grid" id="coursesGrid">
         </div>
-        
-        <div class="instructions">
-            <h4>ملاحظة مهمة:</h4>
-            <p>بعد اختيار طريقة الدفع، سيتم توجيهك مباشرة إلى حسابنا على تليجرام لإتمام العملية. الرجاء إرسال رسالة تأكيد للبدء.</p>
-        </div>
-        
-        <div class="loading" id="loading">
+    </main>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-box">
             <div class="loader"></div>
             <p>جاري التوجيه إلى تليجرام...</p>
             <p class="loading-subtext">يرجى الانتظار لحظات</p>
         </div>
-
-        <div class="error-message" id="errorMessage"></div>
-        
-        <button id="confirmBtn" class="confirm-btn" disabled>تأكيد والمتابعة إلى تليجرام</button>
-        
-        <div class="telegram-info">
-            <p>سيتم توجيهك إلى حسابنا على تليجرام لإتمام عملية الدفع:</p>
-            <a href="https://t.me/Ada778877" target="_blank" class="telegram-link">@Ada778877</a>
-        </div>
-
-        <!-- قسم الطلبات المحفوظة -->
-        <div class="orders-section" id="ordersSection">
-            <h3>طلباتك السابقة</h3>
-            <div class="orders-list" id="ordersList"></div>
-        </div>
     </div>
 
-    <script src="script.js"></script>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>للتواصل معنا عبر تليجرام</p>
+            <a href="https://t.me/Ada778877" target="_blank" class="telegram-link-footer">@Ada778877</a>
+        </div>
+    </footer>
+
+    <script src="courses.js"></script>
 </body>
 </html>
