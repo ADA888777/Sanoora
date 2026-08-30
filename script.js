@@ -384,3 +384,65 @@ function addProfessionalEffects() {
 
 // Initialize professional effects after DOM is loaded
 document.addEventListener('DOMContentLoaded', addProfessionalEffects);
+
+/* ==========================================================================
+   تحسينات إمكانية الوصول وربط الأحداث
+   (بديل معالِجات onclick التي كانت مكتوبة داخل index.html)
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', function () {
+
+    // 1) روابط التذييل (سياسة الخصوصية / الشروط / الدعم / التواصل)
+    document.querySelectorAll('[data-footer-modal]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+            e.preventDefault();
+            openFooterModal(el.getAttribute('data-footer-modal'));
+        });
+    });
+
+    // 2) أزرار إغلاق النوافذ المنبثقة
+    document.querySelectorAll('[data-close-modal]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+            e.preventDefault();
+            closeModal(el.getAttribute('data-close-modal'));
+        });
+    });
+
+    // 3) مزامنة aria-hidden مع حالة النافذة + إدارة التركيز (focus)
+    document.querySelectorAll('.modal').forEach(function (modal) {
+        function sync() {
+            var isOpen = window.getComputedStyle(modal).display !== 'none';
+            var wasOpen = modal.getAttribute('aria-hidden') === 'false';
+            modal.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+
+            if (isOpen && !wasOpen) {
+                modal._lastFocus = document.activeElement;
+                var closeBtn = modal.querySelector('.close-btn');
+                if (closeBtn) closeBtn.focus();
+            } else if (!isOpen && wasOpen && modal._lastFocus && modal._lastFocus.focus) {
+                modal._lastFocus.focus();
+            }
+        }
+        new MutationObserver(sync).observe(modal, {
+            attributes: true,
+            attributeFilter: ['style', 'class']
+        });
+        sync();
+    });
+
+    // 4) aria-expanded لأسئلة الأسئلة الشائعة
+    document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.faq-question').forEach(function (other) {
+                var item = other.closest('.faq-item');
+                other.setAttribute('aria-expanded', item && item.classList.contains('active') ? 'true' : 'false');
+            });
+        });
+    });
+
+    // 5) سعر افتراضي مضمون (الريال السعودي) قبل/عند فشل تحديد الموقع
+    try {
+        updateCurrency();
+    } catch (err) {
+        console.warn('تعذر تطبيق العملة الافتراضية:', err);
+    }
+});
