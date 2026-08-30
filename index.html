@@ -707,6 +707,402 @@
       grid-template-columns: 1fr;
     }
   }
+
+        /* =====================================================
+           ١) لوحة المستند — يمنع ظهور شريط أبيض عند التمرير الزائد
+           ===================================================== */
+        html {
+            background: #2A1E0C;
+        }
+
+        /* =====================================================
+           ٢) الفوتر — شبكة أربعة أعمدة
+           ===================================================== */
+        .footer {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 0;
+            text-align: start;
+            background: linear-gradient(165deg, #3A2A12 0%, #2A1E0C 100%);
+            color: #F3EADA;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            z-index: 3;
+        }
+
+        .footer-glow {
+            position: absolute;
+            top: -35%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(900px, 92%);
+            height: 420px;
+            background: radial-gradient(ellipse at center, rgba(255, 215, 0, .13) 0%, rgba(255, 215, 0, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .footer-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: clamp(3rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 2.5rem) 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+            gap: clamp(1.75rem, 3vw, 3rem);
+            align-items: start;
+        }
+
+        /* --- عمود الهوية --- */
+        .footer-brand-top {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 215, 0, .45);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+        }
+
+        .footer-brand-name {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.4;
+        }
+
+        .footer-brand-title {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: #FFD700;
+        }
+
+        .footer-brand-sub {
+            font-size: .82rem;
+            color: #C9BAA3;
+        }
+
+        .footer-brand-desc {
+            margin: 0 0 1.35rem;
+            max-width: 36ch;
+            font-size: .93rem;
+            line-height: 1.9;
+            color: #C9BAA3;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: .6rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            color: #F3EADA;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 215, 0, .25);
+            text-decoration: none;
+            transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+        }
+
+        .footer-social-link svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .footer-social-link:hover,
+        .footer-social-link:focus-visible {
+            transform: translateY(-3px);
+            background: var(--primary-gradient);
+            border-color: transparent;
+            color: #3A2A12;
+        }
+
+        /* --- أعمدة الروابط --- */
+        .footer-col-title {
+            margin: 0 0 1.1rem;
+            font-size: .82rem;
+            font-weight: 900;
+            letter-spacing: .14em;
+            color: #FFD700;
+        }
+
+        .footer-col-list {
+            display: flex;
+            flex-direction: column;
+            gap: .7rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer-col-list a {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .93rem;
+            color: #C9BAA3;
+            text-decoration: none;
+            transition: color .2s ease, transform .2s ease;
+        }
+
+        .footer-col-list a svg {
+            width: 15px;
+            height: 15px;
+            flex: 0 0 auto;
+            opacity: .8;
+        }
+
+        .footer-col-list a:hover,
+        .footer-col-list a:focus-visible {
+            color: #FFD700;
+            transform: translateX(-4px);
+        }
+
+        .footer-col-list a:hover svg,
+        .footer-col-list a:focus-visible svg {
+            opacity: 1;
+        }
+
+        /* --- نداء الفعل --- */
+        .footer-cta-text {
+            margin: 0 0 1.15rem;
+            font-size: .93rem;
+            line-height: 1.9;
+            color: #C9BAA3;
+        }
+
+        .footer-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            height: 46px;
+            padding: 0 1.4rem;
+            border-radius: 100px;
+            font-size: .95rem;
+            font-weight: 800;
+            color: #3A2A12;
+            text-decoration: none;
+            background: var(--primary-gradient);
+            box-shadow: 0 8px 22px rgba(255, 165, 0, .28);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .footer-cta-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .footer-cta-btn:hover,
+        .footer-cta-btn:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 165, 0, .38);
+        }
+
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            margin-top: .9rem;
+            padding: .35rem .8rem;
+            border-radius: 100px;
+            font-size: .78rem;
+            font-weight: 700;
+            color: #F3EADA;
+            background: rgba(255, 215, 0, .10);
+            border: 1px solid rgba(255, 215, 0, .22);
+        }
+
+        .footer-badge svg {
+            width: 14px;
+            height: 14px;
+            color: #FFD700;
+        }
+
+        /* --- الشريط السفلي --- */
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: .6rem;
+            margin-top: clamp(2.25rem, 4vw, 3rem);
+            padding: 1.25rem 0 1.5rem;
+            border-top: 1px solid rgba(255, 215, 0, .16);
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: .84rem;
+            color: #C9BAA3;
+        }
+
+        .footer-dev a {
+            color: #FFD700;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .footer-dev a:hover,
+        .footer-dev a:focus-visible {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        /* =====================================================
+           ٣) الأسئلة الشائعة — ارتفاع تلقائي بلا حد أعلى
+           ===================================================== */
+        .faq-item {
+            position: relative;
+            border: 1px solid rgba(218, 165, 32, .28);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            inset-inline-start: 0;
+            width: 3px;
+            background: var(--primary-gradient);
+            transform: scaleY(.4);
+            opacity: 0;
+            transition: transform .35s cubic-bezier(.22, .68, .32, 1), opacity .35s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(218, 165, 32, .55);
+            box-shadow: 0 10px 26px rgba(218, 165, 32, .14);
+        }
+
+        .faq-item.active {
+            border-color: rgba(218, 165, 32, .70);
+            background: rgba(255, 215, 0, .10);
+        }
+
+        .faq-item.active::before {
+            transform: scaleY(1);
+            opacity: 1;
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            width: 100%;
+            padding: 1.15rem 1.35rem;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.6;
+            text-align: start;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 215, 0, .06);
+        }
+
+        .faq-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 34px;
+            width: 34px;
+            height: 34px;
+            margin-inline-start: auto;
+            border-radius: 50%;
+            font-size: .8rem;
+            background: rgba(218, 165, 32, .14);
+            border: 1px solid rgba(218, 165, 32, .3);
+            transition: transform .35s cubic-bezier(.22, .68, .32, 1), background .3s ease, color .3s ease, border-color .3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            background: var(--primary-gradient);
+            border-color: transparent;
+            color: #4A3400;
+        }
+
+        .faq-answer {
+            display: grid;
+            grid-template-rows: 0fr;
+            max-height: none;
+            padding: 0;
+            transition: grid-template-rows .35s cubic-bezier(.22, .68, .32, 1);
+        }
+
+        .faq-answer.active {
+            grid-template-rows: 1fr;
+            max-height: none;
+            padding: 0;
+        }
+
+        .faq-answer-inner {
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        .faq-answer-text {
+            margin: 0 1.35rem 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px dashed rgba(218, 165, 32, .4);
+            font-size: .95rem;
+            line-height: 1.95;
+        }
+
 </style>
 </head>
 <body>
@@ -969,8 +1365,10 @@
           <i aria-hidden="true" class="fas fa-chevron-down faq-icon"></i>
         </button>
         <div class="faq-answer">
-          مدة إتقان اللغة تعتمد على اجتهاد الطالب ومدى التزامه بالتعلم والممارسة المنتظمة.
-        </div>
+                        <div class="faq-answer-inner">
+                            <p class="faq-answer-text">مدة إتقان اللغة تعتمد على اجتهاد الطالب ومدى التزامه بالتعلم والممارسة المنتظمة.</p>
+                        </div>
+                    </div>
       </div>
 
       <div class="faq-item">
@@ -979,8 +1377,10 @@
           <i aria-hidden="true" class="fas fa-chevron-down faq-icon"></i>
         </button>
         <div class="faq-answer">
-          نحن لا نقدم شهادات معتمدة، لكن نساعد الطلاب على الحصول على شهادات معتمدة من جهات أخرى.
-        </div>
+                        <div class="faq-answer-inner">
+                            <p class="faq-answer-text">نحن لا نقدم شهادات معتمدة، لكن نساعد الطلاب على الحصول على شهادات معتمدة من جهات أخرى.</p>
+                        </div>
+                    </div>
       </div>
 
       <div class="faq-item">
@@ -989,8 +1389,10 @@
           <i aria-hidden="true" class="fas fa-chevron-down faq-icon"></i>
         </button>
         <div class="faq-answer">
-          طرق الدفع متاحة حسب العرض عند الشراء. الدفع يكون مقدماً ونهائي.
-        </div>
+                        <div class="faq-answer-inner">
+                            <p class="faq-answer-text">طرق الدفع متاحة حسب العرض عند الشراء. الدفع يكون مقدماً ونهائي.</p>
+                        </div>
+                    </div>
       </div>
 
       <div class="faq-item">
@@ -999,8 +1401,10 @@
           <i aria-hidden="true" class="fas fa-chevron-down faq-icon"></i>
         </button>
         <div class="faq-answer">
-          لا يمكن استرداد الرسوم بعد الدفع. الدفع نهائي ولا يتم استرجاع الأموال.
-        </div>
+                        <div class="faq-answer-inner">
+                            <p class="faq-answer-text">لا يمكن استرداد الرسوم بعد الدفع. الدفع نهائي ولا يتم استرجاع الأموال.</p>
+                        </div>
+                    </div>
       </div>
 
       <div class="faq-item">
@@ -1009,8 +1413,10 @@
           <i aria-hidden="true" class="fas fa-chevron-down faq-icon"></i>
         </button>
         <div class="faq-answer">
-          الدفع يكون مقدماً قبل بدء الدورة التعليمية.
-        </div>
+                        <div class="faq-answer-inner">
+                            <p class="faq-answer-text">الدفع يكون مقدماً قبل بدء الدورة التعليمية.</p>
+                        </div>
+                    </div>
       </div>
     </div>
   </div>
@@ -1045,19 +1451,55 @@
 
 <!-- Footer -->
 <footer class="footer">
-  <div class="footer-content">
-    <div class="footer-links">
-      <a href="#" role="button" data-footer-modal="privacy">🔒 سياسة الخصوصية</a>
-      <a href="#" role="button" data-footer-modal="terms">📄 الشروط والأحكام</a>
-      <a href="#" role="button" data-footer-modal="support">🛠️ الدعم الفني</a>
-      <a href="#" role="button" data-footer-modal="contact">📞 تواصل معنا</a>
-    </div>
-    <p>&copy; 2025 سانورا - أكاديمية اللغات. جميع الحقوق محفوظة.</p>
-    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
-      تم التطوير بواسطة <a href="https://aba787.github.io/My-profile/" target="_blank" rel="noopener noreferrer" style="color: #FFD700; text-decoration: none; font-weight: 600;">Aba Tech</a>
-    </p>
-  </div>
-</footer>
+        <div class="footer-glow" aria-hidden="true"></div>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-brand-top">
+                        <img src="attached_assets/photo_2025-12-24_00-07-34_1766524500767.jpg" alt="شعار سانورا" class="footer-logo" width="56" height="56" loading="lazy">
+                        <span class="footer-brand-name">
+                            <span class="footer-brand-title">سانورا</span>
+                            <span class="footer-brand-sub">أكاديمية اللغات الاحترافية</span>
+                        </span>
+                    </div>
+                    <p class="footer-brand-desc">تعلّم عشر لغات عالمية مع مدرّسين محترفين ومناهج عملية.<br>ابدأ من مستواك الحالي وتقدّم بخطة واضحة خطوة بخطوة.</p>
+                    <ul class="footer-social">
+                        <li><a href="https://t.me/Ada778877" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="تيليجرام"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.04 15.47 8.7 20.3c.48 0 .69-.21.94-.46l2.26-2.16 4.68 3.43c.86.48 1.47.23 1.7-.79l3.08-14.44c.29-1.28-.46-1.79-1.29-1.48L1.9 9.99c-1.25.48-1.23 1.17-.21 1.48l4.34 1.35 10.08-6.35c.47-.31.9-.14.55.18z"/></svg></a></li>
+                        <li><a href="mailto:hshmhshm72@gmail.com" class="footer-social-link" aria-label="البريد الإلكتروني"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 4h15A2.5 2.5 0 0 1 22 6.5v11A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11A2.5 2.5 0 0 1 4.5 4Zm.6 2 6.9 4.95L18.9 6H5.1ZM4 8.2v9.3c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5V8.2l-7.4 5.3c-.4.3-.8.3-1.2 0L4 8.2Z"/></svg></a></li>
+                        <li><a href="#courses" class="footer-social-link" aria-label="استعراض الدورات"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1 8l11 5 9-4.1V15h2V8L12 3ZM5 13.2v2.9c0 1.5 3.1 2.9 7 2.9s7-1.4 7-2.9v-2.9l-7 3.2-7-3.2Z"/></svg></a></li>
+                    </ul>
+                </div>
+                <nav class="footer-col" aria-labelledby="footer-nav-title">
+                    <h3 class="footer-col-title" id="footer-nav-title">تصفّح</h3>
+                    <ul class="footer-col-list">
+                        <li><a href="#courses">الدورات</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#faq">الأسئلة الشائعة</a></li>
+                        <li><a href="#contact">التواصل</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-labelledby="footer-support-title">
+                    <h3 class="footer-col-title" id="footer-support-title">الدعم والسياسات</h3>
+                    <ul class="footer-col-list">
+                        <li><a href="#" role="button" data-footer-modal="privacy"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 0 1 6 0v3H9Z"/></svg><span>سياسة الخصوصية</span></a></li>
+                        <li><a href="#" role="button" data-footer-modal="terms"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7l-5-5Zm0 2.5L17.5 8H14V4.5ZM8 12h8v2H8v-2Zm0 4h8v2H8v-2Z"/></svg><span>الشروط والأحكام</span></a></li>
+                        <li><a href="#" role="button" data-footer-modal="support"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a9 9 0 0 0-9 9v6a3 3 0 0 0 3 3h2v-8H5v-1a7 7 0 0 1 14 0v1h-3v8h2a3 3 0 0 0 3-3v-6a9 9 0 0 0-9-9Z"/></svg><span>الدعم الفني</span></a></li>
+                        <li><a href="#" role="button" data-footer-modal="contact"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 2.5a1.8 1.8 0 0 1 2.4.6l1.7 2.6a1.8 1.8 0 0 1-.3 2.3l-1 .9a11 11 0 0 0 4.7 4.7l.9-1a1.8 1.8 0 0 1 2.3-.3l2.6 1.7a1.8 1.8 0 0 1 .6 2.4l-1 1.7a3 3 0 0 1-3.4 1.4C11.2 19.8 4.2 12.8 3.3 6.9A3 3 0 0 1 4.7 3.5l1.9-1Z"/></svg><span>تواصل معنا</span></a></li>
+                    </ul>
+                </nav>
+                <div class="footer-cta">
+                    <h3 class="footer-col-title">ابدأ اليوم</h3>
+                    <p class="footer-cta-text">اختر لغتك وابدأ أول حصة هذا الأسبوع. التسجيل يتم مباشرة عبر تيليجرام.</p>
+                    <a href="https://t.me/Ada778877" target="_blank" rel="noopener noreferrer" class="footer-cta-btn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.04 15.47 8.7 20.3c.48 0 .69-.21.94-.46l2.26-2.16 4.68 3.43c.86.48 1.47.23 1.7-.79l3.08-14.44c.29-1.28-.46-1.79-1.29-1.48L1.9 9.99c-1.25.48-1.23 1.17-.21 1.48l4.34 1.35 10.08-6.35c.47-.31.9-.14.55.18z"/></svg><span>سجّل عبر تيليجرام</span></a>
+                    <span class="footer-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5v5.4l4.3 2.5-1 1.7L11 13.6V7h2Z"/></svg><span>رد خلال 24 ساعة</span></span>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2025 سانورا - أكاديمية اللغات. جميع الحقوق محفوظة.</p>
+                <p class="footer-dev">تم التطوير بواسطة <a href="https://aba787.github.io/My-profile/" target="_blank" rel="noopener noreferrer">Aba Tech</a></p>
+            </div>
+        </div>
+    </footer>
 
 <!-- Footer Modals -->
 <div id="privacy-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="privacy-modal-title">
