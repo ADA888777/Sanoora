@@ -30,8 +30,8 @@
     --dark-gradient: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
     --light-bg: linear-gradient(135deg, #FFFACD 0%, #FFF8DC 100%);
     --white: #ffffff;
-    --text-dark: #B8860B;
-    --text-light: #CD853F;
+    --text-dark: #4A3505;
+    --text-light: #6B4E16;
     --success: #FFD700;
     --shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
     --hover-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
@@ -1103,6 +1103,24 @@
             line-height: 1.95;
         }
 
+
+        /* ===== تحسين التباين اللوني (Contrast fix) ===== */
+        .section-title,
+        .stat-number,
+        .new-price {
+            background: linear-gradient(135deg, #9A6B00 0%, #7A4F00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle,
+        .old-price,
+        .faq-answer-text,
+        .stat-label {
+            color: #6B4E16;
+        }
+
 </style>
 </head>
 <body>
@@ -1134,7 +1152,7 @@
       <img src="attached_assets/photo_2025-12-24_00-07-34_1766524500767.jpg" alt="شعار سانورا" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
     </div>
     <h1 class="hero-title">سانورا</h1>
-    <p class="hero-subtitle">أكاديمية اللغات الاحترافية - تعلم لغات المستقبل مع أفضل المدربين المعتمدين دولياً</p>
+    <p class="hero-subtitle">أكاديمية اللغات الاحترافية - تعلّم لغات المستقبل مع مدرّسين محترفين ومناهج عملية</p>
     <a href="#courses" class="cta-button">
       <i aria-hidden="true" class="fas fa-graduation-cap"></i>
       ابدأ رحلتك التعليمية
@@ -1147,7 +1165,7 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat-item">
-        <span class="stat-number">25</span>
+        <span class="stat-number">10</span>
         <span class="stat-label">لغة عالمية</span>
       </div>
       <div class="stat-item">
@@ -1162,7 +1180,7 @@
 <section id="courses" class="section">
   <div class="container">
     <h2 class="section-title">اختر لغتك المفضلة</h2>
-    <p class="section-subtitle">دورات تفاعلية مصممة بعناية من خبراء تعليم اللغات، مع شهادات معتمدة دولياً</p>
+    <p class="section-subtitle">دورات تفاعلية مصممة بعناية من خبراء تعليم اللغات، مع شهادة إتمام من أكاديمية سانورا</p>
 
     <div class="courses-grid">
       <!-- English -->
@@ -1433,7 +1451,7 @@
       <li><i aria-hidden="true" class="fas fa-check"></i>40 درس تفاعلي مع الذكاء الاصطناعي</li>
       <li><i aria-hidden="true" class="fas fa-check"></i>تدريبات نطق متقدمة</li>
       <li><i aria-hidden="true" class="fas fa-check"></i>محادثات مع متحدثين أصليين</li>
-      <li><i aria-hidden="true" class="fas fa-check"></i>شهادة معتمدة دولياً</li>
+      <li><i aria-hidden="true" class="fas fa-check"></i>شهادة إتمام من أكاديمية سانورا</li>
       <li><i aria-hidden="true" class="fas fa-check"></i>دعم فني 24/7</li>
     </ul>
 
