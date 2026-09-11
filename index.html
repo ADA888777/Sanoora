@@ -1607,6 +1607,104 @@
     .about-stats { grid-template-columns: 1fr; }
   }
 
+  
+  /* ═══ فلتر الدورات — بحث + تصنيف حسب المنطقة ═══ */
+  .courses-toolbar {
+    max-width: 1100px;
+    margin: 0 auto clamp(1.5rem, 3vw, 2.25rem);
+    display: grid;
+    gap: 0.9rem;
+    justify-items: end;
+  }
+
+  .course-search {
+    position: relative;
+    width: min(380px, 100%);
+  }
+  .course-search svg {
+    position: absolute;
+    inset-inline-start: 1rem;
+    top: 50%;
+    width: 18px; height: 18px;
+    margin-top: -9px;
+    color: #8A6A1F;
+    pointer-events: none;
+  }
+  .course-search input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.97rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    background: var(--white);
+    border: 1.5px solid rgba(218, 165, 32, 0.32);
+    border-radius: 100px;
+    padding: 0.78rem 1.1rem 0.78rem 2.9rem;
+    box-shadow: 0 2px 6px rgba(184, 134, 11, 0.06);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .course-search input::placeholder { color: rgba(138, 106, 31, 0.7); }
+  .course-search input:focus {
+    outline: none;
+    border-color: var(--amber);
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.22);
+  }
+  .course-search input::-webkit-search-cancel-button { cursor: pointer; }
+
+  .course-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .filter-chip {
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #6B4E16;
+    background: var(--white);
+    border: 1.5px solid rgba(218, 165, 32, 0.32);
+    border-radius: 100px;
+    padding: 0.5rem 1.1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  }
+  .filter-chip:hover { transform: translateY(-2px); border-color: rgba(218, 165, 32, 0.7); }
+  .filter-chip:focus-visible { outline: 3px solid rgba(255, 215, 0, 0.5); outline-offset: 2px; }
+  .filter-chip.is-active {
+    background: var(--primary-gradient);
+    border-color: transparent;
+    color: #4A3400;
+    box-shadow: 0 10px 22px -12px rgba(255, 165, 0, 0.95);
+  }
+
+  .courses-count {
+    width: 100%;
+    margin: 0;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #6B4E16;
+  }
+
+  .courses-empty {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6B4E16;
+  }
+  .courses-empty[hidden] { display: none; }
+
+  @media (max-width: 560px) {
+    .courses-toolbar { justify-items: stretch; }
+    .course-chips { gap: 0.45rem; }
+    .filter-chip { font-size: 0.84rem; padding: 0.45rem 0.9rem; }
+  }
+
   </style>
 </head>
 <body>
@@ -1712,9 +1810,28 @@
     <h2 class="section-title">اختر لغتك المفضلة</h2>
     <p class="section-subtitle">دورات تفاعلية مصممة بعناية من خبراء تعليم اللغات، مع شهادة إتمام من أكاديمية سانورا</p>
 
+
+    <div class="courses-toolbar">
+      <div class="course-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        <input type="search" id="course-search" placeholder="ابحث عن لغة..." aria-label="ابحث عن لغة">
+      </div>
+
+      <div class="course-chips" role="group" aria-label="تصفية حسب المنطقة">
+        <button type="button" class="filter-chip is-active" data-region="all" aria-pressed="true">كل اللغات</button>
+        <button type="button" class="filter-chip" data-region="europe" aria-pressed="false">أوروبا</button>
+        <button type="button" class="filter-chip" data-region="eastasia" aria-pressed="false">شرق آسيا</button>
+        <button type="button" class="filter-chip" data-region="latam" aria-pressed="false">أمريكا اللاتينية</button>
+        <button type="button" class="filter-chip" data-region="mena" aria-pressed="false">الشرق الأوسط وجنوب آسيا</button>
+      </div>
+
+      <p class="courses-count">عرض <span id="courses-shown">15</span> من <span id="courses-total">15</span></p>
+    </div>
+
+    <p class="courses-empty" id="courses-empty" hidden>ما لقينا لغة بهذا الاسم. جرّب كلمة ثانية أو اضغط «كل اللغات».</p>
     <div class="courses-grid">
       <!-- English -->
-      <div id="english" class="language-card">
+      <div id="english" class="language-card" data-region="europe" data-search="الإنجليزية english انجليزي انجلش">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/gb.png" alt="British Flag" />
         </div>
@@ -1731,7 +1848,7 @@
       </div>
 
       <!-- Spanish -->
-      <div id="spanish" class="language-card">
+      <div id="spanish" class="language-card" data-region="latam" data-search="الإسبانية spanish اسباني">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/es.png" alt="Spanish Flag" />
         </div>
@@ -1748,7 +1865,7 @@
       </div>
 
       <!-- French -->
-      <div id="french" class="language-card">
+      <div id="french" class="language-card" data-region="europe" data-search="الفرنسية french فرنسي">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" />
         </div>
@@ -1765,7 +1882,7 @@
       </div>
 
       <!-- German -->
-      <div id="german" class="language-card">
+      <div id="german" class="language-card" data-region="europe" data-search="الألمانية german الماني">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/de.png" alt="German Flag" />
         </div>
@@ -1782,7 +1899,7 @@
       </div>
 
       <!-- Italian -->
-      <div id="italian" class="language-card">
+      <div id="italian" class="language-card" data-region="europe" data-search="الإيطالية italian ايطالي">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/it.png" alt="Italian Flag" />
         </div>
@@ -1799,7 +1916,7 @@
       </div>
 
       <!-- Chinese -->
-      <div id="chinese" class="language-card">
+      <div id="chinese" class="language-card" data-region="eastasia" data-search="الصينية chinese mandarin صيني">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/cn.png" alt="Chinese Flag" />
         </div>
@@ -1816,7 +1933,7 @@
       </div>
 
       <!-- Japanese -->
-      <div id="japanese" class="language-card">
+      <div id="japanese" class="language-card" data-region="eastasia" data-search="اليابانية japanese ياباني">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/jp.png" alt="Japanese Flag" />
         </div>
@@ -1833,7 +1950,7 @@
       </div>
 
       <!-- Portuguese -->
-      <div id="portuguese" class="language-card">
+      <div id="portuguese" class="language-card" data-region="latam" data-search="البرتغالية portuguese برتغالي برازيلي">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/br.png" alt="Brazilian Flag" />
         </div>
@@ -1850,7 +1967,7 @@
       </div>
 
       <!-- Korean -->
-      <div id="korean" class="language-card">
+      <div id="korean" class="language-card" data-region="eastasia" data-search="الكورية korean كوري">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/kr.png" alt="Korean Flag" />
         </div>
@@ -1867,7 +1984,7 @@
       </div>
 
       <!-- Russian -->
-      <div id="russian" class="language-card">
+      <div id="russian" class="language-card" data-region="europe" data-search="الروسية russian روسي">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/ru.png" alt="Russian Flag" />
         </div>
@@ -1884,7 +2001,7 @@
       </div>
 
       <!-- Turkish -->
-      <div id="turkish" class="language-card">
+      <div id="turkish" class="language-card" data-region="mena" data-search="التركية turkish تركي">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/tr.png" alt="Turkish Flag" />
         </div>
@@ -1901,7 +2018,7 @@
       </div>
 
       <!-- Hindi -->
-      <div id="hindi" class="language-card">
+      <div id="hindi" class="language-card" data-region="mena" data-search="الهندية hindi هندي">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/in.png" alt="Indian Flag" />
         </div>
@@ -1918,7 +2035,7 @@
       </div>
 
       <!-- Persian -->
-      <div id="persian" class="language-card">
+      <div id="persian" class="language-card" data-region="mena" data-search="الفارسية persian farsi فارسي ايراني">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/ir.png" alt="Persian Flag" />
         </div>
@@ -1935,7 +2052,7 @@
       </div>
 
       <!-- Indonesian -->
-      <div id="indonesian" class="language-card">
+      <div id="indonesian" class="language-card" data-region="eastasia" data-search="الإندونيسية indonesian اندونيسي">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/id.png" alt="Indonesian Flag" />
         </div>
@@ -1952,7 +2069,7 @@
       </div>
 
       <!-- Dutch -->
-      <div id="dutch" class="language-card">
+      <div id="dutch" class="language-card" data-region="europe" data-search="الهولندية dutch هولندي">
         <div class="card-flag">
           <img src="https://flagcdn.com/w160/nl.png" alt="Dutch Flag" />
         </div>
@@ -2395,6 +2512,74 @@
       form.elements.name.focus();
     });
   }
+})();
+</script>
+
+<script>
+/* فلتر الدورات — بحث بالاسم + تصنيف حسب المنطقة */
+(function () {
+  var section = document.getElementById('courses');
+  if (!section) return;
+
+  var grid  = section.querySelector('.courses-grid');
+  var input = document.getElementById('course-search');
+  var shown = document.getElementById('courses-shown');
+  var total = document.getElementById('courses-total');
+  var empty = document.getElementById('courses-empty');
+  if (!grid || !input) return;
+
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.language-card'));
+  var chips = Array.prototype.slice.call(section.querySelectorAll('.filter-chip'));
+  var region = 'all';
+
+  if (total) total.textContent = cards.length;
+
+  function norm(s) {
+    return String(s || '')
+      .toLowerCase()
+      .replace(/[\u064B-\u0652\u0640]/g, '')
+      .replace(/[\u0622\u0623\u0625]/g, '\u0627')
+      .replace(/\u0649/g, '\u064A')
+      .replace(/\u0629/g, '\u0647')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function apply() {
+    var q = norm(input.value);
+    var n = 0;
+
+    cards.forEach(function (card) {
+      var okRegion = region === 'all' || card.getAttribute('data-region') === region;
+      var haystack = norm((card.getAttribute('data-search') || '') + ' ' + card.textContent);
+      var okQuery = !q || haystack.indexOf(q) !== -1;
+      var visible = okRegion && okQuery;
+
+      card.style.display = visible ? '' : 'none';
+      if (visible) n++;
+    });
+
+    if (shown) shown.textContent = n;
+    if (empty) empty.hidden = n > 0;
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) {
+        c.classList.remove('is-active');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      chip.classList.add('is-active');
+      chip.setAttribute('aria-pressed', 'true');
+      region = chip.getAttribute('data-region');
+      apply();
+    });
+  });
+
+  input.addEventListener('input', apply);
+  input.addEventListener('search', apply);
+
+  apply();
 })();
 </script>
 </body>
