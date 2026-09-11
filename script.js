@@ -1,6 +1,6 @@
 
 // نظام تحويل العملات التلقائي
-const coursePrice = 99; // السعر الأساسي بالريال السعودي
+const coursePrice = 139; // السعر الأساسي بالريال السعودي
 
 const exchangeRates = {
     SAR: { rate: 1, symbol: 'ريال سعودي', country: 'السعودية' },
@@ -76,7 +76,7 @@ function updateCurrency() {
 function updatePriceDisplay() {
     const currencyInfo = exchangeRates[userCurrency];
     const newPrice = Math.round(coursePrice * currencyInfo.rate);
-    const oldPrice = Math.round(199 * currencyInfo.rate);
+    const oldPrice = Math.round(299 * currencyInfo.rate);
     
     // تحديث عنصر العملة الحالية
     const currentCurrencyElement = document.getElementById('currentCurrency');
