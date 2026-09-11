@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /server.js
+Disallow: /replit.md
+Disallow: /README.md
+Disallow: /netlify.toml
+
+Sitemap: https://sanoora.netlify.app/sitemap.xml
