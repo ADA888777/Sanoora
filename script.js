@@ -430,7 +430,7 @@
     btn.appendChild(document.createElement('span'));
     btn.appendChild(document.createElement('span'));
     btn.appendChild(document.createElement('span'));
-    content.appendChild(btn);
+    content.insertBefore(btn, links);   /* الزر بجانب الشعار، والقائمة تنسدل تحتهما */
 
     function setOpen(open) {
       if (open) { navbar.classList.add('sn-open'); }
